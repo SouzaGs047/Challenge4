@@ -7,21 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE41AC0E2D4D3EBB008F52AB /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE41AC0D2D4D3EBB008F52AB /* ProjectView.swift */; };
+		AE41AC102D4D41F3008F52AB /* AddProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE41AC0F2D4D41F3008F52AB /* AddProjectView.swift */; };
+		AE41AC122D4D4F21008F52AB /* AddLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE41AC112D4D4F21008F52AB /* AddLogView.swift */; };
+		AE41AC152D4D6758008F52AB /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE41AC142D4D6758008F52AB /* PersistenceController.swift */; };
+		AE41AC172D4D692A008F52AB /* LogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE41AC162D4D692A008F52AB /* LogViewModel.swift */; };
 		AEEA64482D4AAE0900391D73 /* Challenge4App.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEA64472D4AAE0900391D73 /* Challenge4App.swift */; };
 		AEEA644A2D4AAE0900391D73 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEA64492D4AAE0900391D73 /* ContentView.swift */; };
 		AEEA644C2D4AAE0A00391D73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEEA644B2D4AAE0A00391D73 /* Assets.xcassets */; };
 		AEEA644F2D4AAE0A00391D73 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEEA644E2D4AAE0A00391D73 /* Preview Assets.xcassets */; };
-		AEEA64512D4AAE0A00391D73 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEA64502D4AAE0A00391D73 /* Persistence.swift */; };
-		AEEA64542D4AAE0A00391D73 /* Challenge4.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AEEA64522D4AAE0A00391D73 /* Challenge4.xcdatamodeld */; };
+		AEEA64512D4AAE0A00391D73 /* ProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEA64502D4AAE0A00391D73 /* ProjectViewModel.swift */; };
+		AEEA64542D4AAE0A00391D73 /* ProjectsContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AEEA64522D4AAE0A00391D73 /* ProjectsContainer.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AE41AC0D2D4D3EBB008F52AB /* ProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectView.swift; sourceTree = "<group>"; };
+		AE41AC0F2D4D41F3008F52AB /* AddProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectView.swift; sourceTree = "<group>"; };
+		AE41AC112D4D4F21008F52AB /* AddLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLogView.swift; sourceTree = "<group>"; };
+		AE41AC142D4D6758008F52AB /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		AE41AC162D4D692A008F52AB /* LogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewModel.swift; sourceTree = "<group>"; };
 		AEEA64442D4AAE0900391D73 /* Challenge4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Challenge4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEEA64472D4AAE0900391D73 /* Challenge4App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge4App.swift; sourceTree = "<group>"; };
 		AEEA64492D4AAE0900391D73 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AEEA644B2D4AAE0A00391D73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AEEA644E2D4AAE0A00391D73 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		AEEA64502D4AAE0A00391D73 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		AEEA64502D4AAE0A00391D73 /* ProjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewModel.swift; sourceTree = "<group>"; };
 		AEEA64532D4AAE0A00391D73 /* Challenge4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Challenge4.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -36,6 +46,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AE41AC132D4D51EB008F52AB /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				AEEA64502D4AAE0A00391D73 /* ProjectViewModel.swift */,
+				AE41AC142D4D6758008F52AB /* PersistenceController.swift */,
+				AE41AC162D4D692A008F52AB /* LogViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		AE41AC182D4D6957008F52AB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AE41AC112D4D4F21008F52AB /* AddLogView.swift */,
+				AE41AC0F2D4D41F3008F52AB /* AddProjectView.swift */,
+				AE41AC0D2D4D3EBB008F52AB /* ProjectView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		AEEA643B2D4AAE0900391D73 = {
 			isa = PBXGroup;
 			children = (
@@ -55,11 +85,12 @@
 		AEEA64462D4AAE0900391D73 /* Challenge4 */ = {
 			isa = PBXGroup;
 			children = (
+				AE41AC182D4D6957008F52AB /* Views */,
+				AE41AC132D4D51EB008F52AB /* ViewModels */,
 				AEEA64472D4AAE0900391D73 /* Challenge4App.swift */,
 				AEEA64492D4AAE0900391D73 /* ContentView.swift */,
 				AEEA644B2D4AAE0A00391D73 /* Assets.xcassets */,
-				AEEA64502D4AAE0A00391D73 /* Persistence.swift */,
-				AEEA64522D4AAE0A00391D73 /* Challenge4.xcdatamodeld */,
+				AEEA64522D4AAE0A00391D73 /* ProjectsContainer.xcdatamodeld */,
 				AEEA644D2D4AAE0A00391D73 /* Preview Content */,
 			);
 			path = Challenge4;
@@ -143,9 +174,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEEA64512D4AAE0A00391D73 /* Persistence.swift in Sources */,
+				AE41AC102D4D41F3008F52AB /* AddProjectView.swift in Sources */,
+				AE41AC152D4D6758008F52AB /* PersistenceController.swift in Sources */,
+				AE41AC122D4D4F21008F52AB /* AddLogView.swift in Sources */,
+				AEEA64512D4AAE0A00391D73 /* ProjectViewModel.swift in Sources */,
 				AEEA644A2D4AAE0900391D73 /* ContentView.swift in Sources */,
-				AEEA64542D4AAE0A00391D73 /* Challenge4.xcdatamodeld in Sources */,
+				AE41AC0E2D4D3EBB008F52AB /* ProjectView.swift in Sources */,
+				AEEA64542D4AAE0A00391D73 /* ProjectsContainer.xcdatamodeld in Sources */,
+				AE41AC172D4D692A008F52AB /* LogViewModel.swift in Sources */,
 				AEEA64482D4AAE0900391D73 /* Challenge4App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,13 +390,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		AEEA64522D4AAE0A00391D73 /* Challenge4.xcdatamodeld */ = {
+		AEEA64522D4AAE0A00391D73 /* ProjectsContainer.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				AEEA64532D4AAE0A00391D73 /* Challenge4.xcdatamodel */,
 			);
 			currentVersion = AEEA64532D4AAE0A00391D73 /* Challenge4.xcdatamodel */;
-			path = Challenge4.xcdatamodeld;
+			path = ProjectsContainer.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
