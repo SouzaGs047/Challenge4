@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EditProjectView: View {
     var body: some View {
-        Text("")
+       BrandingView()
     }
 }
 
