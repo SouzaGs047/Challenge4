@@ -29,6 +29,3 @@ struct BrandingView: View {
 //#Preview {
 //    BrandingView().environment(\ .managedObjectContext, PersistenceController.preview.container.viewContext)
 //}
-
-
-
