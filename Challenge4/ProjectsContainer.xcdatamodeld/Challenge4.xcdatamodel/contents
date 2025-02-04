@@ -7,7 +7,12 @@
         <relationship name="project" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="ProjectEntity" inverseName="logs" inverseEntity="ProjectEntity"/>
     </entity>
     <entity name="ProjectEntity" representedClassName="ProjectEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="finalDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="image" optional="YES" attributeType="Binary"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="objective" optional="YES" attributeType="String"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
         <relationship name="logs" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="LogEntity" inverseName="project" inverseEntity="LogEntity"/>
     </entity>
 </model>

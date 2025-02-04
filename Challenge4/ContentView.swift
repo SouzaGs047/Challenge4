@@ -14,15 +14,21 @@ struct ContentView: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            List {
-                ForEach(coreDataVM.savedEntities) { entity in
-                    NavigationLink(destination: ProjectView(coreDataVM: coreDataVM, currentProject: entity)) {
-                        Text(entity.name ?? "NO NAME")
+            if coreDataVM.savedEntities.isEmpty {
+                Text("Nenhum projeto cadastrado")
+                    .foregroundColor(.gray)
+                    .padding()
+            } else {
+                List {
+                    ForEach(coreDataVM.savedEntities) { entity in
+                        NavigationLink(destination: ProjectView(coreDataVM: coreDataVM, currentProject: entity)) {
+                            Text(entity.name ?? "NO NAME")
+                        }
                     }
+                    .onDelete(perform: coreDataVM.deleteProject)
                 }
-                .onDelete(perform: coreDataVM.deleteProject)
+                .listStyle(PlainListStyle())
             }
-            .listStyle(PlainListStyle())
         }
         .navigationTitle("Projetos")
         .toolbar {

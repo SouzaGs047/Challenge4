@@ -11,35 +11,64 @@ struct ProjectView: View {
     @ObservedObject var coreDataVM = ProjectViewModel()
     @ObservedObject var currentProject: ProjectEntity
     
-    var logsArray: [LogEntity] {
-            let set = currentProject.logs as? Set<LogEntity> ?? []
-            return set.sorted { $0.date ?? Date() < $1.date ?? Date() }
-        }
+    @State var selectedTab : Int = 1
     
         var body: some View {
             VStack {
-                List {
-                    ForEach(logsArray, id: \.self) { log in
-                        VStack {
-                            Text(log.title ?? "Sem título")
-                                .font(.headline)
-                            Text(log.textContent ?? "Sem conteúdo")
-                                .font(.subheadline)
-                                .foregroundStyle(.gray)
-                        }
-                    }
+                HStack {
+                    Button(action: {
+                        selectedTab = 1
+                    }, label: {
+                        Text("Logs")
+                            .font(.title2)
+                            .fontWeight(.semibold)
+                            .foregroundColor(selectedTab == 1 ? .black : .white)
+                            .background(
+                                RoundedRectangle(cornerRadius: 2)
+                                    .foregroundStyle(selectedTab == 1 ? .pink : .black)
+                            )
+        
+                    })
+                    
+                    Text (" | ")
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.pink)
+                    
+                    
+                        Button(action: {
+                            selectedTab = 2
+                        }, label: {
+                            Text("Projeto")
+                                .font(.title2)
+                                .fontWeight(.semibold)
+                                .foregroundColor(selectedTab == 2 ? .black : .white)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 2)
+                                        .foregroundStyle(selectedTab == 2 ? .pink : .black)
+                                )
+                                
+                        })
                 }
-                .listStyle(PlainListStyle())
+//                .padding(.bottom, 15)
+//                .frame(height: 60)
+                
+                
+                TabView (selection: $selectedTab,
+                         content:  {
+                    LogProjectView(currentProject: currentProject)
+                    .tag(1)
+                    
+                    EditProjectView()
+                    .tag(2)
+                })
+                .tabViewStyle(.page(indexDisplayMode: .never))
             }
-            .navigationTitle("Logs")
-            .toolbar {
-                NavigationLink(destination: AddLogView(currentProject: currentProject)) {
-                    Text("Adicionar Log")
-                }
+            .navigationTitle(currentProject.name ?? "Sem Título")
             }
         }
         
-    }
+    
 
 //#Preview {
 //    ProjectView()
