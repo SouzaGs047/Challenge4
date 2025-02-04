@@ -16,7 +16,7 @@ class PersistenceController {
         container = NSPersistentContainer(name: "ProjectsContainer")
         container.loadPersistentStores { (description, error) in
             if let error = error {
-                print("ERROR LOADING CORE DATA. \(error)")
+                print("ERROR LOADING CORE DATA.. \(error)")
             }
         }
     }
