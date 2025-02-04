@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		2E8571742D5285B100CD19D8 /* ImagePickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8571732D5285A500CD19D8 /* ImagePickerModel.swift */; };
 		2E8571782D5287EA00CD19D8 /* LogDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8571772D5287E300CD19D8 /* LogDetailView.swift */; };
+		2E8B6E022D52A22200714620 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8B6E012D52A22200714620 /* ColorExtensions.swift */; };
+		2E8B6E072D52A27B00714620 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8B6E032D52A27B00714620 /* ColorPickerView.swift */; };
+		2E8B6E082D52A27B00714620 /* FontPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8B6E042D52A27B00714620 /* FontPickerView.swift */; };
+		2E8B6E092D52A27B00714620 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8B6E052D52A27B00714620 /* CardView.swift */; };
+		2E8B6E0A2D52A27B00714620 /* BrandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8B6E062D52A27B00714620 /* BrandingView.swift */; };
+		2E8B6E0C2D52A2EF00714620 /* ColorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8B6E0B2D52A2EF00714620 /* ColorViewModel.swift */; };
+		2E8B6E0E2D52A2FF00714620 /* FontViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8B6E0D2D52A2FF00714620 /* FontViewModel.swift */; };
 		AE41AC0E2D4D3EBB008F52AB /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE41AC0D2D4D3EBB008F52AB /* ProjectView.swift */; };
 		AE41AC102D4D41F3008F52AB /* AddProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE41AC0F2D4D41F3008F52AB /* AddProjectView.swift */; };
 		AE41AC122D4D4F21008F52AB /* AddLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE41AC112D4D4F21008F52AB /* AddLogView.swift */; };
@@ -16,13 +23,6 @@
 		AE41AC172D4D692A008F52AB /* LogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE41AC162D4D692A008F52AB /* LogViewModel.swift */; };
 		AE4708C52D51433900B19740 /* LogProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4708C42D51433900B19740 /* LogProjectView.swift */; };
 		AE4708C72D51435200B19740 /* EditProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4708C62D51435200B19740 /* EditProjectView.swift */; };
-		AE4708CA2D52973400B19740 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4708C92D52973400B19740 /* ColorExtensions.swift */; };
-		AE4708CD2D52974100B19740 /* ColorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4708CB2D52974100B19740 /* ColorViewModel.swift */; };
-		AE4708CE2D52974100B19740 /* FontViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4708CC2D52974100B19740 /* FontViewModel.swift */; };
-		AE4708D32D52979F00B19740 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4708CF2D52979F00B19740 /* CardView.swift */; };
-		AE4708D42D52979F00B19740 /* BrandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4708D02D52979F00B19740 /* BrandingView.swift */; };
-		AE4708D52D52979F00B19740 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4708D12D52979F00B19740 /* ColorPickerView.swift */; };
-		AE4708D62D52979F00B19740 /* FontPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4708D22D52979F00B19740 /* FontPickerView.swift */; };
 		AEEA64482D4AAE0900391D73 /* Challenge4App.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEA64472D4AAE0900391D73 /* Challenge4App.swift */; };
 		AEEA644A2D4AAE0900391D73 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEA64492D4AAE0900391D73 /* ContentView.swift */; };
 		AEEA644C2D4AAE0A00391D73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEEA644B2D4AAE0A00391D73 /* Assets.xcassets */; };
@@ -34,6 +34,13 @@
 /* Begin PBXFileReference section */
 		2E8571732D5285A500CD19D8 /* ImagePickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerModel.swift; sourceTree = "<group>"; };
 		2E8571772D5287E300CD19D8 /* LogDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDetailView.swift; sourceTree = "<group>"; };
+		2E8B6E012D52A22200714620 /* ColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorExtensions.swift; path = ../../../../../../../Downloads/ColorExtensions.swift; sourceTree = "<group>"; };
+		2E8B6E032D52A27B00714620 /* ColorPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorPickerView.swift; path = ../../../../../../../Downloads/ColorPickerView.swift; sourceTree = "<group>"; };
+		2E8B6E042D52A27B00714620 /* FontPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FontPickerView.swift; path = ../../../../../../../Downloads/FontPickerView.swift; sourceTree = "<group>"; };
+		2E8B6E052D52A27B00714620 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardView.swift; path = ../../../../../../../Downloads/CardView.swift; sourceTree = "<group>"; };
+		2E8B6E062D52A27B00714620 /* BrandingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BrandingView.swift; path = ../../../../../../../Downloads/BrandingView.swift; sourceTree = "<group>"; };
+		2E8B6E0B2D52A2EF00714620 /* ColorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorViewModel.swift; sourceTree = "<group>"; };
+		2E8B6E0D2D52A2FF00714620 /* FontViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontViewModel.swift; sourceTree = "<group>"; };
 		AE41AC0D2D4D3EBB008F52AB /* ProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectView.swift; sourceTree = "<group>"; };
 		AE41AC0F2D4D41F3008F52AB /* AddProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectView.swift; sourceTree = "<group>"; };
 		AE41AC112D4D4F21008F52AB /* AddLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLogView.swift; sourceTree = "<group>"; };
@@ -41,13 +48,6 @@
 		AE41AC162D4D692A008F52AB /* LogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewModel.swift; sourceTree = "<group>"; };
 		AE4708C42D51433900B19740 /* LogProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogProjectView.swift; sourceTree = "<group>"; };
 		AE4708C62D51435200B19740 /* EditProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectView.swift; sourceTree = "<group>"; };
-		AE4708C92D52973400B19740 /* ColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorExtensions.swift; path = ../../../../Downloads/TesteColorPicker/TesteColorPicker/Utilities/ColorExtensions.swift; sourceTree = "<group>"; };
-		AE4708CB2D52974100B19740 /* ColorViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorViewModel.swift; path = ../../../../Downloads/TesteColorPicker/TesteColorPicker/ViewModel/ColorViewModel.swift; sourceTree = "<group>"; };
-		AE4708CC2D52974100B19740 /* FontViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FontViewModel.swift; path = ../../../../Downloads/TesteColorPicker/TesteColorPicker/ViewModel/FontViewModel.swift; sourceTree = "<group>"; };
-		AE4708CF2D52979F00B19740 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardView.swift; path = ../../../../Downloads/TesteColorPicker/TesteColorPicker/Views/CardView.swift; sourceTree = "<group>"; };
-		AE4708D02D52979F00B19740 /* BrandingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BrandingView.swift; path = ../../../../Downloads/TesteColorPicker/TesteColorPicker/Views/BrandingView.swift; sourceTree = "<group>"; };
-		AE4708D12D52979F00B19740 /* ColorPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorPickerView.swift; path = ../../../../Downloads/TesteColorPicker/TesteColorPicker/Views/ColorPickerView.swift; sourceTree = "<group>"; };
-		AE4708D22D52979F00B19740 /* FontPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FontPickerView.swift; path = ../../../../Downloads/TesteColorPicker/TesteColorPicker/Views/FontPickerView.swift; sourceTree = "<group>"; };
 		AEEA64442D4AAE0900391D73 /* Challenge4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Challenge4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEEA64472D4AAE0900391D73 /* Challenge4App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge4App.swift; sourceTree = "<group>"; };
 		AEEA64492D4AAE0900391D73 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -71,12 +71,12 @@
 		AE41AC132D4D51EB008F52AB /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				AE4708CB2D52974100B19740 /* ColorViewModel.swift */,
-				AE4708CC2D52974100B19740 /* FontViewModel.swift */,
 				2E8571732D5285A500CD19D8 /* ImagePickerModel.swift */,
 				AEEA64502D4AAE0A00391D73 /* ProjectViewModel.swift */,
 				AE41AC142D4D6758008F52AB /* PersistenceController.swift */,
 				AE41AC162D4D692A008F52AB /* LogViewModel.swift */,
+				2E8B6E0B2D52A2EF00714620 /* ColorViewModel.swift */,
+				2E8B6E0D2D52A2FF00714620 /* FontViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -84,10 +84,10 @@
 		AE41AC182D4D6957008F52AB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				AE4708D02D52979F00B19740 /* BrandingView.swift */,
-				AE4708CF2D52979F00B19740 /* CardView.swift */,
-				AE4708D12D52979F00B19740 /* ColorPickerView.swift */,
-				AE4708D22D52979F00B19740 /* FontPickerView.swift */,
+				2E8B6E062D52A27B00714620 /* BrandingView.swift */,
+				2E8B6E052D52A27B00714620 /* CardView.swift */,
+				2E8B6E032D52A27B00714620 /* ColorPickerView.swift */,
+				2E8B6E042D52A27B00714620 /* FontPickerView.swift */,
 				2E8571772D5287E300CD19D8 /* LogDetailView.swift */,
 				AE41AC112D4D4F21008F52AB /* AddLogView.swift */,
 				AE41AC0F2D4D41F3008F52AB /* AddProjectView.swift */,
@@ -101,7 +101,7 @@
 		AE4708C82D52971B00B19740 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				AE4708C92D52973400B19740 /* ColorExtensions.swift */,
+				2E8B6E012D52A22200714620 /* ColorExtensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -216,25 +216,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE41AC102D4D41F3008F52AB /* AddProjectView.swift in Sources */,
-				AE4708CE2D52974100B19740 /* FontViewModel.swift in Sources */,
+				2E8B6E0C2D52A2EF00714620 /* ColorViewModel.swift in Sources */,
 				AE41AC152D4D6758008F52AB /* PersistenceController.swift in Sources */,
-				AE4708CD2D52974100B19740 /* ColorViewModel.swift in Sources */,
 				2E8571782D5287EA00CD19D8 /* LogDetailView.swift in Sources */,
 				AE41AC122D4D4F21008F52AB /* AddLogView.swift in Sources */,
 				AE4708C52D51433900B19740 /* LogProjectView.swift in Sources */,
-				AE4708D62D52979F00B19740 /* FontPickerView.swift in Sources */,
 				AEEA64512D4AAE0A00391D73 /* ProjectViewModel.swift in Sources */,
 				AEEA644A2D4AAE0900391D73 /* ContentView.swift in Sources */,
-				AE4708D42D52979F00B19740 /* BrandingView.swift in Sources */,
-				AE4708D52D52979F00B19740 /* ColorPickerView.swift in Sources */,
 				AE41AC0E2D4D3EBB008F52AB /* ProjectView.swift in Sources */,
 				AE4708C72D51435200B19740 /* EditProjectView.swift in Sources */,
+				2E8B6E0A2D52A27B00714620 /* BrandingView.swift in Sources */,
 				AEEA64542D4AAE0A00391D73 /* ProjectsContainer.xcdatamodeld in Sources */,
 				AE41AC172D4D692A008F52AB /* LogViewModel.swift in Sources */,
+				2E8B6E0E2D52A2FF00714620 /* FontViewModel.swift in Sources */,
 				AEEA64482D4AAE0900391D73 /* Challenge4App.swift in Sources */,
 				2E8571742D5285B100CD19D8 /* ImagePickerModel.swift in Sources */,
-				AE4708D32D52979F00B19740 /* CardView.swift in Sources */,
-				AE4708CA2D52973400B19740 /* ColorExtensions.swift in Sources */,
+				2E8B6E072D52A27B00714620 /* ColorPickerView.swift in Sources */,
+				2E8B6E022D52A22200714620 /* ColorExtensions.swift in Sources */,
+				2E8B6E092D52A27B00714620 /* CardView.swift in Sources */,
+				2E8B6E082D52A27B00714620 /* FontPickerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
