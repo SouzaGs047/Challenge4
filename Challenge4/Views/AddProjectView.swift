@@ -10,7 +10,7 @@ import SwiftUI
 struct AddProjectView: View {
     @ObservedObject var coreDataVM = ProjectViewModel()
     @State var nameProjectTextField: String = ""
-    @Environment (\.dismiss) var dismiss
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         VStack(spacing: 10) {

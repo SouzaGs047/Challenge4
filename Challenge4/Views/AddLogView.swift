@@ -1,10 +1,3 @@
-//
-//  addLogProject.swift
-//  Challenge4
-//
-//  Created by GUSTAVO SOUZA SANTANA on 31/01/25.
-//
-
 import SwiftUI
 
 struct AddLogView: View {
@@ -12,52 +5,131 @@ struct AddLogView: View {
     @ObservedObject var currentProject: ProjectEntity
     @Environment(\.dismiss) var dismiss
     
-    @State var titleLog: String = ""
-    @State var textContentLog: String = ""
+    @State private var selectedOption: String?
+    @State private var textContentLog: String = ""
+    @State private var selectedImages: [UIImage] = []
+    @State private var showImagePicker = false
     
+    let columns = Array(repeating: GridItem(.flexible(), spacing: 10), count: 3)
+    
+    let topics = [
+        "Anotação", "Lousa", "Marca", "Pesquisa",
+        "Progresso", "Referências", "Testes",
+        "Visita Técnica", "Outros"
+    ]
     
     var body: some View {
-        VStack(spacing: 10) {
-            TextField("Título...", text: $titleLog)
-                .font(.headline)
-                .padding(.leading)
-                .frame(height: 55)
-                .background(.white)
-                .clipShape(RoundedRectangle(cornerSize: CGSize(width: 20, height: 10)))
+        NavigationView {
+            VStack(spacing: 20) {
+                // Menu de tópicos
+                Menu {
+                    ForEach(topics, id: \.self) { topic in
+                        Button(topic) {
+                            selectedOption = topic
+                        }
+                    }
+                } label: {
+                    HStack {
+                        Text(selectedOption ?? "O que você quer registrar agora?")
+                            .foregroundColor(.pink)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                        Spacer()
+                        Image(systemName: "chevron.down")
+                            .foregroundColor(.primary)
+                    }
+                    .padding()
+                    .background(Color(UIColor.systemGray6))
+                    .cornerRadius(8)
+                }
                 .padding(.horizontal)
-            
-            TextField("Conteúdo...", text: $textContentLog)
-                .font(.headline)
-                .padding(.leading)
-                .frame(height: 55)
-                .background(.white)
-                .clipShape(RoundedRectangle(cornerSize: CGSize(width: 20, height: 10)))
-                .padding(.horizontal)
-            
-            Button(action: {
-                guard !titleLog.isEmpty else {return}
-                guard !textContentLog.isEmpty else {return}
-                coreDataVM.addLog(to: currentProject, title: titleLog, textContent: textContentLog)
-                titleLog = ""
-                textContentLog = ""
-                dismiss()
+                
+                // TextEditor para digitar o log
+                TextEditor(text: $textContentLog)
+                    .placeholder(when: textContentLog.isEmpty) {
+                        Text("Clique aqui para digitar")
+                            .foregroundColor(.gray)
+                    }
+                    .frame(maxHeight: 200)
+                    .padding()
+                    .background(Color(UIColor.systemGray6))
+                    .cornerRadius(8)
+                    .padding(.horizontal)
+                
+                // Imagens
+                VStack(spacing: 0) {
+                    HStack(spacing: 4) {
+                        Text("Imagens")
+                            .foregroundColor(.pink)
+                            .font(.system(size: 20, weight: .bold))
+                            .padding(.trailing, 60.0)
+                        Spacer()
+                        
+                        Button(action: {
+                            showImagePicker = true
+                        }) {
+                            Text("Clique aqui para adicionar")
+                                .foregroundColor(.gray)
+                                .font(.system(size: 16))
+                        }
+                        Spacer()
+                    }
+                    .padding()
+                    
+                    ScrollView {
+                        LazyVGrid(columns: columns, spacing: 10) {
+                            ForEach(selectedImages, id: \.self) { image in
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 100, height: 100)
+                                    .clipShape(RoundedRectangle(cornerSize: CGSize(width: 10, height: 10)))
+                                    .clipped()
+                            }
+                        }
+                        .padding()
+                    }
+                }
+                .padding(.bottom)
             }
-            , label: {
-                Text("Adicionar Log")
-                    .font(.headline)
-                    .foregroundStyle(.white)
-                    .frame(height: 55)
-                    .frame(maxWidth: .infinity)
-                    .background(.blue)
-                    .background(in: RoundedRectangle(cornerSize: CGSize(width: 20, height: 10)))
-            })
-            .padding(.horizontal)
-        }.navigationTitle("Adicionar Log")
-        
-        Spacer()
+            .sheet(isPresented: $showImagePicker) {
+                PhotoPicker(selectedImages: $selectedImages)
+            }
+            .navigationTitle("Adicionar Log") // Título da navegação
+            .toolbar {
+                // Adiciona o botão "Salvar Log" na toolbar, alinhado à direita
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Salvar Log") {
+                        guard let topic = selectedOption, !textContentLog.isEmpty else { return }
+                        
+                        let imagesData = selectedImages.compactMap { $0.jpegData(compressionQuality: 0.8) }
+                        
+                        coreDataVM.addLog(to: currentProject,
+                                          title: topic,
+                                          textContent: textContentLog,
+                                          imagesData: imagesData)
+                        
+                        dismiss()
+                    }
+                    .foregroundColor(.pink)
+                }
+            }
+        }
     }
 }
 
-//#Preview {
-//    addLogView()
-//}
+extension View {
+    func placeholder<Content: View>(
+        when shouldShow: Bool,
+        alignment: Alignment = .leading,
+        @ViewBuilder placeholder: () -> Content
+    ) -> some View {
+        ZStack(alignment: alignment) {
+            placeholder().opacity(shouldShow ? 1 : 0)
+            self
+        }
+    }
+}
+
+#Preview {
+    AddLogView(currentProject: ProjectEntity())
+}
