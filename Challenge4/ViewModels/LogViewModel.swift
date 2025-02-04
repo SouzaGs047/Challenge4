@@ -44,6 +44,21 @@ class LogViewModel: ObservableObject {
 
         saveData()
     }
+    
+    func deleteLog(_ log: LogEntity) {
+        if let project = log.project {
+            // Remover o log da lista de logs do projeto antes de deletar
+            project.removeFromLogs(log)
+        }
+        
+        context.delete(log) // Agora o log está desvinculado antes de ser excluído
+        saveData()
+    }
+
+
+    
+
+    
 
     
     private func saveData() {

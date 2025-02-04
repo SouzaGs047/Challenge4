@@ -10,6 +10,9 @@ struct AddLogView: View {
     @State private var selectedImages: [UIImage] = []
     @State private var showImagePicker = false
     
+    @State private var showDeleteAlert = false // Novo state para o alerta
+        @State private var logToDelete: LogEntity? // Novo state para armazenar o log a ser deletado
+    
     let columns = Array(repeating: GridItem(.flexible(), spacing: 10), count: 3)
     
     let topics = [
@@ -114,8 +117,22 @@ struct AddLogView: View {
                 }
             }
         }
+        .alert("Deletar Log", isPresented: $showDeleteAlert) {
+                        Button("Cancelar", role: .cancel) {}
+                        Button("Deletar", role: .destructive) {
+                            if let logToDelete = logToDelete {
+                                coreDataVM.deleteLog(logToDelete)
+                            }
+                        }
+                    } message: {
+                        Text("Tem certeza que deseja deletar este log?")
+                    }
     }
+    
+    
 }
+
+
 
 extension View {
     func placeholder<Content: View>(
