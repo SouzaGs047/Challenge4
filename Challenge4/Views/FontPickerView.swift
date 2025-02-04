@@ -17,12 +17,44 @@ struct FontPickerView: View {
         VStack(alignment: .leading, spacing: 10) {
             
             HStack{
-                Text("Texto")
-                    .font(.title3)
-                    .bold()
-                    .foregroundColor(Color.pink)
-                Spacer()
                 
+                HStack{
+                    Text("Texto")
+                        .font(.title3)
+                        .bold()
+                        .foregroundColor(Color.pink)
+                    Spacer()
+                    Button("Adicionar") {
+                        if !fontName.isEmpty && selectedCategory != "Selecione" {
+                            withAnimation {
+                                viewModel.addFont(nameFont: fontName, category: selectedCategory)
+                            }
+                            fontName = ""
+                            selectedCategory = "Selecione"
+
+                        }
+                    }
+                    .disabled(selectedCategory == "Selecione")
+                    .padding(.vertical, 8)
+                    .padding(.horizontal, 16)
+                    .background(Color(red: 0.8, green: 0, blue: 0.3))
+                    .foregroundColor(.white)
+                    .cornerRadius(8)
+                    .disabled(selectedCategory == "Selecione")
+                    .accessibilityLabel("Botão para adicionar uma nova fonte")
+                }
+                
+       
+            }
+            
+            
+            HStack {
+                TextField("Nome da fonte", text: $fontName)
+                    .frame(width: 200, height: 50)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    
+                
+                Spacer()
                 Picker("Função", selection: $selectedCategory) {
                     Text("Selecione").tag("").disabled(true)
                     ForEach(categories, id: \ .self) { category in
@@ -30,30 +62,6 @@ struct FontPickerView: View {
                     }
                 }
                 .pickerStyle(MenuPickerStyle())
-       
-            }
-            
-            
-            HStack {
-                TextField("Nome da fonte", text: $fontName)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                
-                
-                
-                Button("Adicionar") {
-                    if !fontName.isEmpty && !selectedCategory.isEmpty {
-                        withAnimation {
-                            viewModel.addFont(nameFont: fontName, category: selectedCategory)
-                        }
-                        fontName = ""
-                    }
-                }
-                .padding(.vertical, 8)
-                .padding(.horizontal, 16)
-                .background(Color(red: 0.8, green: 0, blue: 0.3))
-                .foregroundColor(.white)
-                .cornerRadius(8)
-                .accessibilityLabel("Botão para adicionar uma nova fonte")
                 
             }
             if viewModel.fonts.isEmpty {
@@ -69,15 +77,16 @@ struct FontPickerView: View {
     
 
             List {
-                ForEach(viewModel.fonts, id: \ .self) { font in
+                ForEach(viewModel.fonts, id: \.self) { font in
                     HStack {
-                        Text(font.category ?? "Sem categoria")
+                        Text(font.category?.isEmpty == false ? font.category! : "Categoria não definida")
                             .bold()
                         Spacer()
                         Text(font.nameFont ?? "Sem nome")
                     }
                 }
                 .onDelete(perform: viewModel.deleteFont)
+            
             }.listStyle(PlainListStyle())
         }
         .padding()
