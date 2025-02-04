@@ -38,10 +38,10 @@ struct ContentView: View {
             .sheet(isPresented: $showAddProjectSheet) {
                 AddProjectView(coreDataVM: coreDataVM)
             }
-        }
+        
     }
-}
+    
+    #Preview {
+        ContentView()
+    }
 
-#Preview {
-    ContentView()
-}
