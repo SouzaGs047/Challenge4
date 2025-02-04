@@ -1,5 +1,4 @@
-//
-//  ProjectView.swift
+
 //  Challenge4
 //
 //  Created by GUSTAVO SOUZA SANTANA on 31/01/25.
@@ -12,15 +11,16 @@ struct ProjectView: View {
     @ObservedObject var currentProject: ProjectEntity
     
     var logsArray: [LogEntity] {
-            let set = currentProject.logs as? Set<LogEntity> ?? []
-            return set.sorted { $0.date ?? Date() < $1.date ?? Date() }
-        }
+        let set = currentProject.logs as? Set<LogEntity> ?? []
+        return set.sorted { $0.date ?? Date() < $1.date ?? Date() }
+    }
     
-        var body: some View {
-            VStack {
-                List {
-                    ForEach(logsArray, id: \.self) { log in
-                        VStack {
+    var body: some View {
+        VStack {
+            List {
+                ForEach(logsArray, id: \.self) { log in
+                    NavigationLink(destination: LogDetailView(log: log)) {
+                        VStack(alignment: .leading) {
                             Text(log.title ?? "Sem título")
                                 .font(.headline)
                             Text(log.textContent ?? "Sem conteúdo")
@@ -29,17 +29,18 @@ struct ProjectView: View {
                         }
                     }
                 }
-                .listStyle(PlainListStyle())
             }
-            .navigationTitle("Logs")
-            .toolbar {
-                NavigationLink(destination: AddLogView(currentProject: currentProject)) {
-                    Text("Adicionar Log")
-                }
+            .listStyle(PlainListStyle())
+        }
+        .navigationTitle("Logs")
+        .toolbar {
+            NavigationLink(destination: AddLogView(currentProject: currentProject)) {
+                Text("Adicionar Log")
             }
         }
-        
     }
+}
+
 
 //#Preview {
 //    ProjectView()

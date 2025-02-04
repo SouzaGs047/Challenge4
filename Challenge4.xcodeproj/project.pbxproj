@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E8571742D5285B100CD19D8 /* ImagePickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8571732D5285A500CD19D8 /* ImagePickerModel.swift */; };
+		2E8571782D5287EA00CD19D8 /* LogDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8571772D5287E300CD19D8 /* LogDetailView.swift */; };
 		AE41AC0E2D4D3EBB008F52AB /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE41AC0D2D4D3EBB008F52AB /* ProjectView.swift */; };
 		AE41AC102D4D41F3008F52AB /* AddProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE41AC0F2D4D41F3008F52AB /* AddProjectView.swift */; };
 		AE41AC122D4D4F21008F52AB /* AddLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE41AC112D4D4F21008F52AB /* AddLogView.swift */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E8571732D5285A500CD19D8 /* ImagePickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerModel.swift; sourceTree = "<group>"; };
+		2E8571772D5287E300CD19D8 /* LogDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDetailView.swift; sourceTree = "<group>"; };
 		AE41AC0D2D4D3EBB008F52AB /* ProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectView.swift; sourceTree = "<group>"; };
 		AE41AC0F2D4D41F3008F52AB /* AddProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectView.swift; sourceTree = "<group>"; };
 		AE41AC112D4D4F21008F52AB /* AddLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLogView.swift; sourceTree = "<group>"; };
@@ -49,6 +53,7 @@
 		AE41AC132D4D51EB008F52AB /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				2E8571732D5285A500CD19D8 /* ImagePickerModel.swift */,
 				AEEA64502D4AAE0A00391D73 /* ProjectViewModel.swift */,
 				AE41AC142D4D6758008F52AB /* PersistenceController.swift */,
 				AE41AC162D4D692A008F52AB /* LogViewModel.swift */,
@@ -59,6 +64,7 @@
 		AE41AC182D4D6957008F52AB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2E8571772D5287E300CD19D8 /* LogDetailView.swift */,
 				AE41AC112D4D4F21008F52AB /* AddLogView.swift */,
 				AE41AC0F2D4D41F3008F52AB /* AddProjectView.swift */,
 				AE41AC0D2D4D3EBB008F52AB /* ProjectView.swift */,
@@ -176,6 +182,7 @@
 			files = (
 				AE41AC102D4D41F3008F52AB /* AddProjectView.swift in Sources */,
 				AE41AC152D4D6758008F52AB /* PersistenceController.swift in Sources */,
+				2E8571782D5287EA00CD19D8 /* LogDetailView.swift in Sources */,
 				AE41AC122D4D4F21008F52AB /* AddLogView.swift in Sources */,
 				AEEA64512D4AAE0A00391D73 /* ProjectViewModel.swift in Sources */,
 				AEEA644A2D4AAE0900391D73 /* ContentView.swift in Sources */,
@@ -183,6 +190,7 @@
 				AEEA64542D4AAE0A00391D73 /* ProjectsContainer.xcdatamodeld in Sources */,
 				AE41AC172D4D692A008F52AB /* LogViewModel.swift in Sources */,
 				AEEA64482D4AAE0900391D73 /* Challenge4App.swift in Sources */,
+				2E8571742D5285B100CD19D8 /* ImagePickerModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
