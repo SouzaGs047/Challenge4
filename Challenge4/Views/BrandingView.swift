@@ -17,14 +17,14 @@ struct BrandingView: View {
     var body: some View {
         
         
-            VStack {
-                ColorPickerView(viewModel: colorViewModel)
-                Divider()
-                FontPickerView(viewModel: fontViewModel)
-            }
+        VStack{
+            ColorPickerView(viewModel: colorViewModel)
+            Divider()
+            FontPickerView(viewModel: fontViewModel)
+            Divider()
+        }
             .environment(\ .managedObjectContext, viewContext)
         }
-    
 }
 //#Preview {
 //    BrandingView().environment(\ .managedObjectContext, PersistenceController.preview.container.viewContext)

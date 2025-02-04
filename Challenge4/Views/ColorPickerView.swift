@@ -3,13 +3,13 @@
 //  TesteColorPicker
 //
 //  Created by HENRIQUE LEAL PEREIRA DOS SANTOS on 30/01/25.
-//
+//import SwiftUI
 import SwiftUI
+import CoreData
 
 struct ColorPickerView: View {
     @ObservedObject var viewModel: ColorViewModel
     @State private var selectedColor = Color.blue
-    @State private var colorName = ""
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -19,23 +19,19 @@ struct ColorPickerView: View {
                     .bold()
                     .foregroundColor(Color.pink)
                     .accessibilityLabel("Título: Cores")
-                Spacer()
-                ColorPicker("Escolha uma cor", selection: $selectedColor)
-                    .labelsHidden()
-                    .padding(.horizontal, 4)
             }
-            HStack(spacing: 30) {
-                TextField("Nome da cor", text: $colorName)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
-                    .accessibilityLabel("Campo de texto para nome da cor")
+            
+            HStack {
+                
+                Spacer()
+                ColorPicker("", selection: $selectedColor)
+                    .labelsHidden()
                 
                 Button("Adicionar") {
-                    if let hex = selectedColor.toHex(), !colorName.isEmpty {
+                    if let hex = selectedColor.toHex() {
                         withAnimation {
-                            viewModel.addColor(name: colorName, hex: hex)
+                            viewModel.addColor(hex: hex)
                         }
-                        colorName = ""
                     }
                 }
                 .padding(.vertical, 8)
@@ -45,7 +41,7 @@ struct ColorPickerView: View {
                 .cornerRadius(8)
                 .accessibilityLabel("Botão para adicionar uma nova cor")
             }
-
+            
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 15) {
                     if viewModel.colors.isEmpty {
@@ -57,7 +53,6 @@ struct ColorPickerView: View {
                         ForEach(viewModel.colors, id: \ .self) { ColorItemEntity in
                             if let hex = ColorItemEntity.hex, let validColor = Color(hex: hex) {
                                 CardView(ColorItemEntity: ColorItemEntity, viewModel: viewModel)
-                                    .accessibilityLabel("Cor: \(ColorItemEntity.name ?? "Sem nome") - Código: \(ColorItemEntity.hex ?? "#000000")")
                             }
                         }
                     }

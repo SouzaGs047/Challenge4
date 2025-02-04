@@ -25,14 +25,13 @@ func fetchColors() {
     }
 }
 
-func addColor(name: String, hex: String) {
+func addColor(hex: String) {
     guard !colors.contains(where: { $0.hex == hex }) else {
         print("A cor já existe na lista.")
         return
     }
     
     let newColor = ColorItemEntity(context: context)
-    newColor.name = name
     newColor.hex = hex
     saveData()
 }

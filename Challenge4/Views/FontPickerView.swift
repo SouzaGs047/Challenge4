@@ -9,7 +9,7 @@ import SwiftUI
 struct FontPickerView: View {
     @ObservedObject var viewModel: FontViewModel
     @State private var fontName = ""
-    @State private var selectedCategory = "Categoria"
+    @State private var selectedCategory = "Selecione"
 
     let categories = ["Títulos", "Texto Corrido", "Legenda", "Footnote"]
 
@@ -24,7 +24,7 @@ struct FontPickerView: View {
                 Spacer()
                 
                 Picker("Função", selection: $selectedCategory) {
-                    Text("Categoria").tag("").disabled(true)
+                    Text("Selecione").tag("").disabled(true)
                     ForEach(categories, id: \ .self) { category in
                         Text(category).tag(category)
                     }
@@ -38,7 +38,7 @@ struct FontPickerView: View {
                 TextField("Nome da fonte", text: $fontName)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 
-
+                
                 
                 Button("Adicionar") {
                     if !fontName.isEmpty && !selectedCategory.isEmpty {
@@ -56,8 +56,17 @@ struct FontPickerView: View {
                 .accessibilityLabel("Botão para adicionar uma nova fonte")
                 
             }
-            
-            Divider().background(Color.white.opacity(0.3))
+            if viewModel.fonts.isEmpty {
+                Text("Nenhuma cor adicionada ainda.")
+                    .foregroundColor(.gray)
+                    .italic()
+               
+
+                    .padding(.all)
+                    .accessibilityLabel("Aviso: Nenhuma cor adicionada ainda")
+            }
+
+    
 
             List {
                 ForEach(viewModel.fonts, id: \ .self) { font in
