@@ -22,9 +22,8 @@ struct AddLogView: View {
     ]
     
     var body: some View {
-        NavigationView {
             VStack(spacing: 20) {
-                // Menu de tópicos
+                Divider()
                 Menu {
                     ForEach(topics, id: \.self) { topic in
                         Button(topic) {
@@ -97,11 +96,12 @@ struct AddLogView: View {
             .sheet(isPresented: $showImagePicker) {
                 PhotoPicker(selectedImages: $selectedImages)
             }
-            .navigationTitle("Adicionar Log") // Título da navegação
+            .navigationTitle("Escrever Log")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                // Adiciona o botão "Salvar Log" na toolbar, alinhado à direita
+               
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Salvar Log") {
+                    Button("Registrar") {
                         guard let topic = selectedOption, !textContentLog.isEmpty else { return }
                         
                         let imagesData = selectedImages.compactMap { $0.jpegData(compressionQuality: 0.8) }

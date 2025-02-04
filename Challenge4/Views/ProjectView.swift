@@ -26,8 +26,8 @@ struct ProjectView: View {
             TabView(selection: $selectedTab) {
                 LogProjectView(currentProject: currentProject)
                     .tag(1)
-                
-                EditProjectView()
+                    
+                    EditProjectView(currentProject: currentProject)
                     .tag(2)
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
