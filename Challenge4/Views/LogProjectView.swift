@@ -20,12 +20,14 @@ struct LogProjectView: View {
         VStack {
             List {
                 ForEach(logsArray, id: \.self) { log in
-                    VStack {
-                        Text(log.title ?? "Sem título")
-                            .font(.headline)
-                        Text(log.textContent ?? "Sem conteúdo")
-                            .font(.subheadline)
-                            .foregroundStyle(.gray)
+                    NavigationLink(destination: LogDetailView(log: log)) {
+                        VStack {
+                            Text(log.title ?? "Sem título")
+                                .font(.headline)
+                            Text(log.textContent ?? "Sem conteúdo")
+                                .font(.subheadline)
+                                .foregroundStyle(.gray)
+                        }
                     }
                 }
             }
