@@ -26,6 +26,6 @@
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="type" optional="YES" attributeType="String"/>
         <relationship name="color" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ColorItemEntity" inverseName="project" inverseEntity="ColorItemEntity"/>
-        <relationship name="logs" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="LogEntity" inverseName="project" inverseEntity="LogEntity"/>
+        <relationship name="logs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LogEntity" inverseName="project" inverseEntity="LogEntity"/>
     </entity>
 </model>
