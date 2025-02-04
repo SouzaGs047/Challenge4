@@ -8,12 +8,6 @@ struct ProjectView: View {
     
     var body: some View {
         VStack(spacing: 16) {
-       
-            Text("Linha")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            
             Picker("", selection: $selectedTab) {
                 Text("Logs").tag(1)
                 Text("Projeto").tag(2)

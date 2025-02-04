@@ -46,7 +46,7 @@ class LogViewModel: ObservableObject {
     }
     
     func deleteLog(_ log: LogEntity) {
-        if let project = log.project {
+        if let project = log.logProject {
             // Remover o log da lista de logs do projeto antes de deletar
             project.removeFromLogs(log)
         }
