@@ -15,9 +15,9 @@ struct ContentView: View {
     var body: some View {
         VStack(spacing: 20) {
             if coreDataVM.savedEntities.isEmpty {
-                Text("Nenhum projeto cadastrado")
+                Text("Você não está trabalhando em nenhum projeto. Que tal começar um novo?")
                     .foregroundColor(.gray)
-                    .padding()
+                    .padding(.horizontal, 30)
             } else {
                 List {
                     ForEach(coreDataVM.savedEntities) { entity in
@@ -32,7 +32,7 @@ struct ContentView: View {
         }
         .navigationTitle("Projetos")
         .toolbar {
-            Button("Adicionar Projeto"){
+            Button("Criar projeto"){
                 showAddProjectSheet.toggle()
             }
             .sheet(isPresented: $showAddProjectSheet) {
