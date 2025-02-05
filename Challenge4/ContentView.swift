@@ -10,6 +10,7 @@ import CoreData
 
 struct ContentView: View {
     @StateObject var coreDataVM = ProjectViewModel()
+    @State private var selectedImages: [UIImage] = []
     @State var showAddProjectSheet = false
     
     var body: some View {
@@ -40,6 +41,8 @@ struct ContentView: View {
             }
             
         }
+        
+        
     }
 }
     

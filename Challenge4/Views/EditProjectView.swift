@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct EditProjectView: View {
-    @ObservedObject var currentProject: ProjectEntity  // Adiciona o currentProject como ObservedObject
-    @State private var selectedImages: [UIImage] = []  // Alterado para um array de UIImage
+    @ObservedObject var currentProject: ProjectEntity
+    @State private var selectedImages: [UIImage] = []
     @StateObject private var coreDataVM = ProjectViewModel()
 
     var body: some View {
         VStack {
-            EditProjectFormView(selectedImages: $selectedImages)  // Alteração aqui também para passar selectedImages
+            EditProjectFormView(selectedImages: $selectedImages)
                 .environmentObject(coreDataVM)
         }
     }

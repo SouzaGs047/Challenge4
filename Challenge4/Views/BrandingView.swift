@@ -8,24 +8,22 @@ import SwiftUI
 import CoreData
 
 
-
 struct BrandingView: View {
-    @Environment(\ .managedObjectContext) private var viewContext
+    @Environment(\.managedObjectContext) private var viewContext
     @StateObject private var colorViewModel = ColorViewModel()
-    @StateObject private var fontViewModel = FontViewModel()
+    @ObservedObject var fontViewModel: FontViewModel  // Recebendo como ObservedObject
     
     var body: some View {
-        
-        
-        VStack{
+        VStack {
             ColorPickerView(viewModel: colorViewModel)
             Divider()
-            FontPickerView(viewModel: fontViewModel)
+            FontPickerView(viewModel: fontViewModel) // Agora usa a instância passada de EditProjectFormView
             Divider()
         }
-            .environment(\ .managedObjectContext, viewContext)
-        }
+        .environment(\.managedObjectContext, viewContext)
+    }
 }
+
 //#Preview {
 //    BrandingView().environment(\ .managedObjectContext, PersistenceController.preview.container.viewContext)
 //}

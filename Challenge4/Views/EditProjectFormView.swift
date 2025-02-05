@@ -5,7 +5,8 @@ struct EditProjectFormView: View {
     @EnvironmentObject var coreDataVM: ProjectViewModel
     
     @Binding var selectedImages: [UIImage]  // Alteração para um array de UIImage
-    
+    @StateObject private var fontViewModel = FontViewModel()
+    @StateObject private var colorViewModel = ColorViewModel()
     @State private var isBrandingExpanded = false
     @State private var isSaved = false  // Novo estado para alternar entre editar e salvar
     @State private var isImagePickerPresented = false  // Para controlar a exibição do ImagePicker
@@ -21,7 +22,9 @@ struct EditProjectFormView: View {
     ]
     
     var body: some View {
-        ScrollView {
+        
+        
+        ScrollView{
             VStack(spacing: 20) {
                 // Exibição da Imagem com texto explicativo
                 ImageView(selectedImages: $selectedImages)
@@ -72,7 +75,12 @@ struct EditProjectFormView: View {
                 
                 // Branding Section
                 DisclosureGroup("Configurações de Branding", isExpanded: $isBrandingExpanded) {
-                    BrandingView()
+                    VStack{
+                        ColorPickerView(viewModel: colorViewModel)
+                        Divider()
+                        FontPickerView(viewModel: fontViewModel)
+                        Divider()
+                    }
                 }
                 .padding()
                 .background(Color.gray.opacity(0.1))
@@ -84,10 +92,9 @@ struct EditProjectFormView: View {
         .navigationBarItems(
             trailing: Button(action: {
                 if isSaved {
-                    // Modo de Edição: muda para o modo de edição
+                
                     isSaved = false
                 } else {
-                    // Modo de Salvamento: salva os dados
                     saveData()
                 }
             }) {

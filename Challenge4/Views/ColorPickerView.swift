@@ -36,7 +36,7 @@ struct ColorPickerView: View {
                 }
                 .padding(.vertical, 8)
                 .padding(.horizontal, 16)
-                .background(Color(red: 0.8, green: 0, blue: 0.3))
+                .background(Color.pink)
                 .foregroundColor(.white)
                 .cornerRadius(8)
                 .accessibilityLabel("Botão para adicionar uma nova cor")

@@ -10,16 +10,15 @@ import CoreData
 
 class FontViewModel: ObservableObject {
     private let context: NSManagedObjectContext
-    @Published var fonts: [ColorItemEntity] = []
-    
+    @Published var fonts: [FontEntity] = [] // Corrigido para buscar fontes reais
+
     init(context: NSManagedObjectContext = PersistenceController.shared.viewContext) {
         self.context = context
         fetchFonts()
     }
-    
-    // Buscar fontes no Core Data
+
     func fetchFonts() {
-        let request: NSFetchRequest<ColorItemEntity> = ColorItemEntity.fetchRequest()
+        let request: NSFetchRequest<FontEntity> = FontEntity.fetchRequest() // Corrigido para buscar FontEntity
         do {
             fonts = try context.fetch(request)
         } catch {
@@ -28,12 +27,11 @@ class FontViewModel: ObservableObject {
     }
 
     func addFont(nameFont: String, category: String) {
-        let newFont = ColorItemEntity(context: context)
+        let newFont = FontEntity(context: context) 
         newFont.nameFont = nameFont
         newFont.category = category
         saveData()
     }
-
 
     func deleteFont(at offsets: IndexSet) {
         offsets.forEach { index in
@@ -52,3 +50,4 @@ class FontViewModel: ObservableObject {
         }
     }
 }
+
