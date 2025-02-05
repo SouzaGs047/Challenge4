@@ -11,6 +11,9 @@
 		2E8571782D5287EA00CD19D8 /* LogDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8571772D5287E300CD19D8 /* LogDetailView.swift */; };
 		2E8B6E0C2D52A2EF00714620 /* ColorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8B6E0B2D52A2EF00714620 /* ColorViewModel.swift */; };
 		2E8B6E0E2D52A2FF00714620 /* FontViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8B6E0D2D52A2FF00714620 /* FontViewModel.swift */; };
+		2EC02B8E2D53B0DD00D73B29 /* ProjetoConfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC02B8D2D53B0D400D73B29 /* ProjetoConfView.swift */; };
+		2EC02B902D53B36700D73B29 /* EditProjectFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC02B8F2D53B35300D73B29 /* EditProjectFormView.swift */; };
+		2EC02B922D53CE4A00D73B29 /* ProjectImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC02B912D53CE3C00D73B29 /* ProjectImagePicker.swift */; };
 		49B126D02D52A3EE0094880E /* BrandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B126CF2D52A3EE0094880E /* BrandingView.swift */; };
 		49B126D22D52A4120094880E /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B126D12D52A4120094880E /* CardView.swift */; };
 		49B126D42D52A42A0094880E /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B126D32D52A42A0094880E /* ColorPickerView.swift */; };
@@ -36,6 +39,9 @@
 		2E8571772D5287E300CD19D8 /* LogDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDetailView.swift; sourceTree = "<group>"; };
 		2E8B6E0B2D52A2EF00714620 /* ColorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorViewModel.swift; sourceTree = "<group>"; };
 		2E8B6E0D2D52A2FF00714620 /* FontViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontViewModel.swift; sourceTree = "<group>"; };
+		2EC02B8D2D53B0D400D73B29 /* ProjetoConfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjetoConfView.swift; sourceTree = "<group>"; };
+		2EC02B8F2D53B35300D73B29 /* EditProjectFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectFormView.swift; sourceTree = "<group>"; };
+		2EC02B912D53CE3C00D73B29 /* ProjectImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectImagePicker.swift; sourceTree = "<group>"; };
 		49B126CF2D52A3EE0094880E /* BrandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandingView.swift; sourceTree = "<group>"; };
 		49B126D12D52A4120094880E /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		49B126D32D52A42A0094880E /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
@@ -71,6 +77,7 @@
 		AE41AC132D4D51EB008F52AB /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				2EC02B912D53CE3C00D73B29 /* ProjectImagePicker.swift */,
 				2E8571732D5285A500CD19D8 /* ImagePickerModel.swift */,
 				AEEA64502D4AAE0A00391D73 /* ProjectViewModel.swift */,
 				AE41AC142D4D6758008F52AB /* PersistenceController.swift */,
@@ -85,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				49B126CF2D52A3EE0094880E /* BrandingView.swift */,
+				2EC02B8D2D53B0D400D73B29 /* ProjetoConfView.swift */,
 				2E8571772D5287E300CD19D8 /* LogDetailView.swift */,
 				AE41AC112D4D4F21008F52AB /* AddLogView.swift */,
 				AE41AC0F2D4D41F3008F52AB /* AddProjectView.swift */,
@@ -92,6 +100,7 @@
 				49B126D32D52A42A0094880E /* ColorPickerView.swift */,
 				49B126D52D52A4430094880E /* FontPickerView.swift */,
 				AE41AC0D2D4D3EBB008F52AB /* ProjectView.swift */,
+				2EC02B8F2D53B35300D73B29 /* EditProjectFormView.swift */,
 				AE4708C42D51433900B19740 /* LogProjectView.swift */,
 				AE4708C62D51435200B19740 /* EditProjectView.swift */,
 			);
@@ -218,15 +227,18 @@
 				49B126D02D52A3EE0094880E /* BrandingView.swift in Sources */,
 				AE41AC102D4D41F3008F52AB /* AddProjectView.swift in Sources */,
 				2E8B6E0C2D52A2EF00714620 /* ColorViewModel.swift in Sources */,
+				2EC02B8E2D53B0DD00D73B29 /* ProjetoConfView.swift in Sources */,
 				AE41AC152D4D6758008F52AB /* PersistenceController.swift in Sources */,
 				2E8571782D5287EA00CD19D8 /* LogDetailView.swift in Sources */,
 				AE41AC122D4D4F21008F52AB /* AddLogView.swift in Sources */,
 				AE4708C52D51433900B19740 /* LogProjectView.swift in Sources */,
 				49B126D62D52A4430094880E /* FontPickerView.swift in Sources */,
 				AEEA64512D4AAE0A00391D73 /* ProjectViewModel.swift in Sources */,
+				2EC02B902D53B36700D73B29 /* EditProjectFormView.swift in Sources */,
 				AEEA644A2D4AAE0900391D73 /* ContentView.swift in Sources */,
 				AE41AC0E2D4D3EBB008F52AB /* ProjectView.swift in Sources */,
 				49B126D42D52A42A0094880E /* ColorPickerView.swift in Sources */,
+				2EC02B922D53CE4A00D73B29 /* ProjectImagePicker.swift in Sources */,
 				49B126D22D52A4120094880E /* CardView.swift in Sources */,
 				AE4708C72D51435200B19740 /* EditProjectView.swift in Sources */,
 				AEEA64542D4AAE0A00391D73 /* ProjectsContainer.xcdatamodeld in Sources */,
