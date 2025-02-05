@@ -11,7 +11,8 @@
 		2E8571782D5287EA00CD19D8 /* LogDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8571772D5287E300CD19D8 /* LogDetailView.swift */; };
 		2E8B6E0C2D52A2EF00714620 /* ColorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8B6E0B2D52A2EF00714620 /* ColorViewModel.swift */; };
 		2E8B6E0E2D52A2FF00714620 /* FontViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8B6E0D2D52A2FF00714620 /* FontViewModel.swift */; };
-		2EC02B8E2D53B0DD00D73B29 /* ProjetoConfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC02B8D2D53B0D400D73B29 /* ProjetoConfView.swift */; };
+		2E8B6E102D53FDD700714620 /* ContenrView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8B6E0F2D53FDD700714620 /* ContenrView2.swift */; };
+		2EC02B8E2D53B0DD00D73B29 /* ProjectCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC02B8D2D53B0D400D73B29 /* ProjectCreationView.swift */; };
 		2EC02B902D53B36700D73B29 /* EditProjectFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC02B8F2D53B35300D73B29 /* EditProjectFormView.swift */; };
 		2EC02B922D53CE4A00D73B29 /* ProjectImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC02B912D53CE3C00D73B29 /* ProjectImagePicker.swift */; };
 		49B126D02D52A3EE0094880E /* BrandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B126CF2D52A3EE0094880E /* BrandingView.swift */; };
@@ -39,7 +40,8 @@
 		2E8571772D5287E300CD19D8 /* LogDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDetailView.swift; sourceTree = "<group>"; };
 		2E8B6E0B2D52A2EF00714620 /* ColorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorViewModel.swift; sourceTree = "<group>"; };
 		2E8B6E0D2D52A2FF00714620 /* FontViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontViewModel.swift; sourceTree = "<group>"; };
-		2EC02B8D2D53B0D400D73B29 /* ProjetoConfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjetoConfView.swift; sourceTree = "<group>"; };
+		2E8B6E0F2D53FDD700714620 /* ContenrView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContenrView2.swift; sourceTree = "<group>"; };
+		2EC02B8D2D53B0D400D73B29 /* ProjectCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCreationView.swift; sourceTree = "<group>"; };
 		2EC02B8F2D53B35300D73B29 /* EditProjectFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectFormView.swift; sourceTree = "<group>"; };
 		2EC02B912D53CE3C00D73B29 /* ProjectImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectImagePicker.swift; sourceTree = "<group>"; };
 		49B126CF2D52A3EE0094880E /* BrandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandingView.swift; sourceTree = "<group>"; };
@@ -92,7 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				49B126CF2D52A3EE0094880E /* BrandingView.swift */,
-				2EC02B8D2D53B0D400D73B29 /* ProjetoConfView.swift */,
+				2EC02B8D2D53B0D400D73B29 /* ProjectCreationView.swift */,
 				2E8571772D5287E300CD19D8 /* LogDetailView.swift */,
 				AE41AC112D4D4F21008F52AB /* AddLogView.swift */,
 				AE41AC0F2D4D41F3008F52AB /* AddProjectView.swift */,
@@ -139,6 +141,7 @@
 				AE41AC132D4D51EB008F52AB /* ViewModels */,
 				AEEA64472D4AAE0900391D73 /* Challenge4App.swift */,
 				AEEA64492D4AAE0900391D73 /* ContentView.swift */,
+				2E8B6E0F2D53FDD700714620 /* ContenrView2.swift */,
 				AEEA644B2D4AAE0A00391D73 /* Assets.xcassets */,
 				AEEA64522D4AAE0A00391D73 /* ProjectsContainer.xcdatamodeld */,
 				AEEA644D2D4AAE0A00391D73 /* Preview Content */,
@@ -227,7 +230,8 @@
 				49B126D02D52A3EE0094880E /* BrandingView.swift in Sources */,
 				AE41AC102D4D41F3008F52AB /* AddProjectView.swift in Sources */,
 				2E8B6E0C2D52A2EF00714620 /* ColorViewModel.swift in Sources */,
-				2EC02B8E2D53B0DD00D73B29 /* ProjetoConfView.swift in Sources */,
+				2E8B6E102D53FDD700714620 /* ContenrView2.swift in Sources */,
+				2EC02B8E2D53B0DD00D73B29 /* ProjectCreationView.swift in Sources */,
 				AE41AC152D4D6758008F52AB /* PersistenceController.swift in Sources */,
 				2E8571782D5287EA00CD19D8 /* LogDetailView.swift in Sources */,
 				AE41AC122D4D4F21008F52AB /* AddLogView.swift in Sources */,
@@ -380,7 +384,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Challenge4/Preview Content\"";
-				DEVELOPMENT_TEAM = 2ULRN6JS84;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -389,6 +393,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -414,7 +419,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Challenge4/Preview Content\"";
-				DEVELOPMENT_TEAM = 2ULRN6JS84;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -423,6 +428,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
