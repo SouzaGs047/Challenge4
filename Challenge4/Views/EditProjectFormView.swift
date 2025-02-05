@@ -3,6 +3,7 @@ import PhotosUI
 
 struct EditProjectFormView: View {
     @EnvironmentObject var coreDataVM: ProjectViewModel
+    @ObservedObject var currentProject: ProjectEntity  // Adiciona o currentProject aqui
     @Binding var selectedImages: [UIImage]  // Alteração para um array de UIImage
     
     @State private var isBrandingExpanded = false
@@ -171,7 +172,7 @@ struct DatePickerField: View {
     }
 }
 
-#Preview {
-    EditProjectFormView(selectedImages: .constant([UIImage()]))
-        .environmentObject(ProjectViewModel())
-}
+//#Preview {
+//    EditProjectFormView(selectedImages: .constant([UIImage()]))
+//        .environmentObject(ProjectViewModel())
+//}
