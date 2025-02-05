@@ -43,10 +43,11 @@ struct ContentView: View {
         
         BrandingView()
             }
-        
+            
+        }
     }
+}
     
-    #Preview {
-        ContentView()
-    }
-
+//    #Preview {
+//        ContentView()
+//    }

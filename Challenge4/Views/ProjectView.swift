@@ -1,74 +1,29 @@
-
-//  Challenge4
-//
-//  Created by GUSTAVO SOUZA SANTANA on 31/01/25.
-//
-
 import SwiftUI
 
 struct ProjectView: View {
     @ObservedObject var coreDataVM = ProjectViewModel()
     @ObservedObject var currentProject: ProjectEntity
     
-    @State var selectedTab : Int = 1
+    @State private var selectedTab: Int = 1
     
-        var body: some View {
-            VStack {
-                HStack {
-                    Button(action: {
-                        selectedTab = 1
-                    }, label: {
-                        Text("Logs")
-                            .font(.title2)
-                            .fontWeight(.semibold)
-                            .foregroundColor(selectedTab == 1 ? .black : .white)
-                            .background(
-                                RoundedRectangle(cornerRadius: 2)
-                                    .foregroundStyle(selectedTab == 1 ? .pink : .black)
-                            )
-        
-                    })
-                    
-                    Text (" | ")
-                        .font(.title2)
-                        .fontWeight(.semibold)
-                        .foregroundColor(.pink)
-                    
-                    
-                        Button(action: {
-                            selectedTab = 2
-                        }, label: {
-                            Text("Projeto")
-                                .font(.title2)
-                                .fontWeight(.semibold)
-                                .foregroundColor(selectedTab == 2 ? .black : .white)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 2)
-                                        .foregroundStyle(selectedTab == 2 ? .pink : .black)
-                                )
-                                
-                        })
-                }
-//                .padding(.bottom, 15)
-//                .frame(height: 60)
-                
-                
-                TabView (selection: $selectedTab,
-                         content:  {
-                    LogProjectView(currentProject: currentProject)
-                    .tag(1)
-                    
-                    EditProjectView(currentProject: currentProject)
-                    .tag(2)
-                })
-                .tabViewStyle(.page(indexDisplayMode: .never))
+    var body: some View {
+        VStack(spacing: 16) {
+            Picker("", selection: $selectedTab) {
+                Text("Logs").tag(1)
+                Text("Projeto").tag(2)
             }
-            .navigationTitle(currentProject.name ?? "Sem Título")
+            .pickerStyle(.segmented)
+            .onAppear {
+                UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color.pink)
+            }
+            
+            if selectedTab == 1 {
+                LogProjectView(currentProject: currentProject)
+            } else {
+                EditProjectView(currentProject: currentProject)
             }
         }
-        
-    
-
-//#Preview {
-//    ProjectView()
-//}
+        .padding()
+        .navigationTitle(currentProject.name ?? "Sem Título")
+    }
+}
