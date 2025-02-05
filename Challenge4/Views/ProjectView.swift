@@ -4,7 +4,7 @@ struct ProjectView: View {
     @ObservedObject var coreDataVM = ProjectViewModel()
     @ObservedObject var currentProject: ProjectEntity
     
-    @State var selectedTab: Int = 1
+    @State private var selectedTab: Int = 1
     
     var body: some View {
         VStack(spacing: 16) {
@@ -17,14 +17,11 @@ struct ProjectView: View {
                 UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color.pink)
             }
             
-            TabView(selection: $selectedTab) {
+            if selectedTab == 1 {
                 LogProjectView(currentProject: currentProject)
-                    .tag(1)
-                    
-                    EditProjectView(currentProject: currentProject)
-                    .tag(2)
+            } else {
+                EditProjectView(currentProject: currentProject)
             }
-            .tabViewStyle(.page(indexDisplayMode: .never))
         }
         .padding()
         .navigationTitle(currentProject.name ?? "Sem Título")
