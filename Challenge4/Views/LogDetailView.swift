@@ -152,7 +152,6 @@ struct LogDetailView: View {
             }
             .padding()
         }
-        .navigationTitle("Detalhes do Log")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {

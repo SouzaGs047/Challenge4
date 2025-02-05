@@ -8,8 +8,14 @@
 import SwiftUI
 
 struct EditProjectView: View {
+    @State private var selectedImages: [UIImage] = []  // Alterado para um array de UIImage
+    @StateObject private var coreDataVM = ProjectViewModel()
+
     var body: some View {
-       BrandingView()
+        VStack {
+            EditProjectFormView(selectedImages: $selectedImages)  // Alteração aqui também para passar selectedImages
+                .environmentObject(coreDataVM)
+        }
     }
 }
 
