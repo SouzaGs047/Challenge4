@@ -64,6 +64,7 @@ struct FontPickerView: View {
                 .pickerStyle(MenuPickerStyle())
                 
             }
+            
             if viewModel.fonts.isEmpty {
                 Text("Nenhuma cor adicionada ainda.")
                     .foregroundColor(.gray)
@@ -92,6 +93,7 @@ struct FontPickerView: View {
         .padding()
     }
 }
+
 
 struct FontPickerView_Previews: PreviewProvider {
     static var previews: some View {

@@ -3,12 +3,18 @@ import SwiftUI
 struct LogDetailView: View {
     
     let log: LogEntity
+    
+    let onLogUpdated: () -> Void
+
     @ObservedObject private var viewModel = LogViewModel()
     @State private var isEditing = false
     @State private var selectedOption: String?
     @State private var editedTextContent: String
     @State private var selectedImages: [UIImage]
     @State private var showImagePicker = false
+    
+    let columns = Array(repeating: GridItem(.flexible(), spacing: 10), count: 3)
+
 
     let topics = [
         "Anotação", "Lousa", "Marca", "Pesquisa",
@@ -16,15 +22,16 @@ struct LogDetailView: View {
         "Visita Técnica", "Outros"
     ]
 
-    init(log: LogEntity) {
-        self.log = log
-        _selectedOption = State(initialValue: log.title)
-        _editedTextContent = State(initialValue: log.textContent ?? "")
-        _selectedImages = State(initialValue: log.images?.compactMap { entity in
-            guard let imageData = (entity as? LogImageEntity)?.imageData else { return nil }
-            return UIImage(data: imageData)
-        } ?? [])
-    }
+    init(log: LogEntity, onLogUpdated: @escaping () -> Void) {
+            self.log = log
+            self.onLogUpdated = onLogUpdated
+            _selectedOption = State(initialValue: log.title)
+            _editedTextContent = State(initialValue: log.textContent ?? "")
+            _selectedImages = State(initialValue: log.images?.compactMap { entity in
+                guard let imageData = (entity as? LogImageEntity)?.imageData else { return nil }
+                return UIImage(data: imageData)
+            } ?? [])
+        }
 
     var body: some View {
         ScrollView {
@@ -82,18 +89,18 @@ struct LogDetailView: View {
                         }
                         .padding()
 
-                        ScrollView(.horizontal) {
-                            HStack {
+                        ScrollView {
+                            LazyVGrid(columns: columns, spacing: 10) {
                                 ForEach(selectedImages, id: \.self) { image in
                                     Image(uiImage: image)
                                         .resizable()
-                                        .scaledToFit()
-                                        .frame(height: 100)
+                                        .scaledToFill()
+                                        .frame(width: 100, height: 100) // Definir tamanho quadrado
                                         .clipShape(RoundedRectangle(cornerSize: CGSize(width: 10, height: 10)))
-                                        .padding(.horizontal, 5)
+                                        .clipped() // Evita distorção
                                 }
                             }
-                            .padding(.horizontal)
+                            .padding()
                         }
                     }
                     .padding(.bottom)
@@ -127,17 +134,18 @@ struct LogDetailView: View {
                         Text("Nenhuma imagem disponível")
                             .foregroundColor(.gray)
                     } else {
-                        ScrollView(.horizontal) {
-                            HStack {
+                        ScrollView {
+                            LazyVGrid(columns: columns, spacing: 10) {
                                 ForEach(selectedImages, id: \.self) { image in
                                     Image(uiImage: image)
                                         .resizable()
-                                        .scaledToFit()
-                                        .frame(height: 200)
+                                        .scaledToFill()
+                                        .frame(width: 100, height: 100) // Definir tamanho quadrado
                                         .clipShape(RoundedRectangle(cornerSize: CGSize(width: 10, height: 10)))
-                                        .padding(.horizontal, 5)
+                                        .clipped() // Evita distorção
                                 }
                             }
+                            .padding()
                         }
                     }
                 }
@@ -163,6 +171,7 @@ struct LogDetailView: View {
         viewModel.updateLog(log: log, title: title, textContent: textContent, imageData: imagesData)
         editedTextContent = textContent
         selectedImages = imagesData.compactMap { UIImage(data: $0) }
+        onLogUpdated()
     }
 }
 

@@ -61,6 +61,5 @@ struct ColorPickerView: View {
             }
             .padding(.top, 5)
         }
-        .padding()
     }
 }
