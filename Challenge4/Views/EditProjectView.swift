@@ -18,7 +18,3 @@ struct EditProjectView: View {
         }
     }
 }
-
-#Preview {
-    EditProjectView()
-}

@@ -8,12 +8,12 @@ class LogViewModel: ObservableObject {
         self.context = context
     }
     
-    func addLog(to project: ProjectEntity, title: String, textContent: String, imagesData: [Data]) {
+    func addLog(to logProject: ProjectEntity, title: String, textContent: String, imagesData: [Data]) {
         let newLog = LogEntity(context: context)
         newLog.title = title
         newLog.textContent = textContent
         newLog.date = Date()
-        newLog.project = project
+        newLog.logProject = logProject
 
         // Criar e associar cada imagem ao log
         for imageData in imagesData {
@@ -46,7 +46,7 @@ class LogViewModel: ObservableObject {
     }
     
     func deleteLog(_ log: LogEntity) {
-        if let project = log.project {
+        if let project = log.logProject {
             // Remover o log da lista de logs do projeto antes de deletar
             project.removeFromLogs(log)
         }

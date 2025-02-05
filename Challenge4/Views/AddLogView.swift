@@ -11,7 +11,7 @@ struct AddLogView: View {
     @State private var showImagePicker = false
     
     @State private var showDeleteAlert = false // Novo state para o alerta
-        @State private var logToDelete: LogEntity? // Novo state para armazenar o log a ser deletado
+    @State private var logToDelete: LogEntity? // Novo state para armazenar o log a ser deletado
     
     let columns = Array(repeating: GridItem(.flexible(), spacing: 10), count: 3)
     
@@ -22,115 +22,113 @@ struct AddLogView: View {
     ]
     
     var body: some View {
-        NavigationView {
-            VStack(spacing: 20) {
-                // Menu de tópicos
-                Menu {
-                    ForEach(topics, id: \.self) { topic in
-                        Button(topic) {
-                            selectedOption = topic
-                        }
+        VStack(spacing: 20) {
+            Divider()
+            Menu {
+                ForEach(topics, id: \.self) { topic in
+                    Button(topic) {
+                        selectedOption = topic
                     }
-                } label: {
-                    HStack {
-                        Text(selectedOption ?? "O que você quer registrar agora?")
-                            .foregroundColor(.pink)
-                            .frame(maxWidth: .infinity, alignment: .center)
-                        Spacer()
-                        Image(systemName: "chevron.down")
-                            .foregroundColor(.primary)
-                    }
-                    .padding()
-                    .background(Color(UIColor.systemGray6))
-                    .cornerRadius(8)
                 }
+            } label: {
+                HStack {
+                    Text(selectedOption ?? "O que você quer registrar agora?")
+                        .foregroundColor(.pink)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                    Spacer()
+                    Image(systemName: "chevron.down")
+                        .foregroundColor(.primary)
+                }
+                .padding()
+                .background(Color(UIColor.systemGray6))
+                .cornerRadius(8)
+            }
+            .padding(.horizontal)
+            
+            // TextEditor para digitar o log
+            TextEditor(text: $textContentLog)
+                .placeholder(when: textContentLog.isEmpty) {
+                    Text("Clique aqui para digitar")
+                        .foregroundColor(.gray)
+                }
+                .frame(maxHeight: 200)
+                .padding()
+                .background(Color(UIColor.systemGray6))
+                .cornerRadius(8)
                 .padding(.horizontal)
-                
-                // TextEditor para digitar o log
-                TextEditor(text: $textContentLog)
-                    .placeholder(when: textContentLog.isEmpty) {
-                        Text("Clique aqui para digitar")
-                            .foregroundColor(.gray)
-                    }
-                    .frame(maxHeight: 200)
-                    .padding()
-                    .background(Color(UIColor.systemGray6))
-                    .cornerRadius(8)
-                    .padding(.horizontal)
-                
-                // Imagens
-                VStack(spacing: 0) {
-                    HStack(spacing: 4) {
-                        Text("Imagens")
-                            .foregroundColor(.pink)
-                            .font(.system(size: 20, weight: .bold))
-                            .padding(.trailing, 60.0)
-                        Spacer()
-                        
-                        Button(action: {
-                            showImagePicker = true
-                        }) {
-                            Text("Clique aqui para adicionar")
-                                .foregroundColor(.gray)
-                                .font(.system(size: 16))
-                        }
-                        Spacer()
-                    }
-                    .padding()
+            
+            // Imagens
+            VStack(spacing: 0) {
+                HStack(spacing: 4) {
+                    Text("Imagens")
+                        .foregroundColor(.pink)
+                        .font(.system(size: 20, weight: .bold))
+                        .padding(.trailing, 60.0)
+                    Spacer()
                     
-                    ScrollView {
-                        LazyVGrid(columns: columns, spacing: 10) {
-                            ForEach(selectedImages, id: \.self) { image in
-                                Image(uiImage: image)
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 100, height: 100)
-                                    .clipShape(RoundedRectangle(cornerSize: CGSize(width: 10, height: 10)))
-                                    .clipped()
-                            }
+                    Button(action: {
+                        showImagePicker = true
+                    }) {
+                        Text("Clique aqui para adicionar")
+                            .foregroundColor(.gray)
+                            .font(.system(size: 16))
+                    }
+                    Spacer()
+                }
+                .padding()
+                
+                ScrollView {
+                    LazyVGrid(columns: columns, spacing: 10) {
+                        ForEach(selectedImages, id: \.self) { image in
+                            Image(uiImage: image)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 100, height: 100)
+                                .clipShape(RoundedRectangle(cornerSize: CGSize(width: 10, height: 10)))
+                                .clipped()
                         }
-                        .padding()
                     }
+                    .padding()
                 }
-                .padding(.bottom)
             }
-            .sheet(isPresented: $showImagePicker) {
-                PhotoPicker(selectedImages: $selectedImages)
-            }
-            .navigationTitle("Adicionar Log") // Título da navegação
-            .toolbar {
-                // Adiciona o botão "Salvar Log" na toolbar, alinhado à direita
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Salvar Log") {
-                        guard let topic = selectedOption, !textContentLog.isEmpty else { return }
-                        
-                        let imagesData = selectedImages.compactMap { $0.jpegData(compressionQuality: 0.8) }
-                        
-                        coreDataVM.addLog(to: currentProject,
-                                          title: topic,
-                                          textContent: textContentLog,
-                                          imagesData: imagesData)
-                        
-                        dismiss()
-                    }
-                    .foregroundColor(.pink)
+            .padding(.bottom)
+        }
+        .sheet(isPresented: $showImagePicker) {
+            PhotoPicker(selectedImages: $selectedImages)
+        }
+        .navigationTitle("Escrever Log")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button("Registrar") {
+                    guard let topic = selectedOption, !textContentLog.isEmpty else { return }
+                    
+                    let imagesData = selectedImages.compactMap { $0.jpegData(compressionQuality: 0.8) }
+                    
+                    coreDataVM.addLog(to: currentProject,
+                                      title: topic,
+                                      textContent: textContentLog,
+                                      imagesData: imagesData)
+                    
+                    dismiss()
                 }
+                .foregroundColor(.pink)
             }
         }
         .alert("Deletar Log", isPresented: $showDeleteAlert) {
-                        Button("Cancelar", role: .cancel) {}
-                        Button("Deletar", role: .destructive) {
-                            if let logToDelete = logToDelete {
-                                coreDataVM.deleteLog(logToDelete)
-                            }
-                        }
-                    } message: {
-                        Text("Tem certeza que deseja deletar este log?")
-                    }
+            Button("Cancelar", role: .cancel) {}
+            Button("Deletar", role: .destructive) {
+                if let logToDelete = logToDelete {
+                    coreDataVM.deleteLog(logToDelete)
+                }
+            }
+        } message: {
+            Text("Tem certeza que deseja deletar este log?")
+        }
     }
-    
-    
 }
+
+
 
 
 

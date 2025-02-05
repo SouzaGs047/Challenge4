@@ -22,11 +22,10 @@ struct CardView: View {
                     .frame(width: 100, height: 120)
                     .overlay(
                         VStack {
-                            Text(ColorItemEntity.name ?? "Sem nome")
-                                .font(.headline)
-                                .foregroundColor(.white)
                             Text(ColorItemEntity.hex ?? "#000000")
-                                .font(.caption)
+                                
+                                .font(.system(size: 15).bold())
+                                .foregroundColor(.white)
                                 .foregroundColor(.white.opacity(0.8))
                         }
                         .padding()
