@@ -4,7 +4,6 @@ struct LogProjectView: View {
     @ObservedObject var coreDataVM = ProjectViewModel()
     @ObservedObject var currentProject: ProjectEntity
     @StateObject private var logViewModel = LogViewModel()
-    @State private var refreshID = UUID()
 
     @State private var showDeleteAlert = false
     @State private var logToDelete: LogEntity? // Armazena o log a ser deletado
@@ -19,9 +18,7 @@ struct LogProjectView: View {
         VStack {
             List {
                 ForEach(logsArray, id: \.self) { log in
-                    NavigationLink(destination: LogDetailView(log: log, onLogUpdated: {
-                        refreshID = UUID()
-                    })) {
+                    NavigationLink(destination: LogDetailView(log: log)) {
                         VStack(alignment: .leading) {
                             Text(log.title ?? "Sem título")
                                 .font(.headline)
@@ -41,14 +38,12 @@ struct LogProjectView: View {
                 }
             }
             .listStyle(PlainListStyle())
-            .id(refreshID)
         }
         .alert("Deletar Log", isPresented: $showDeleteAlert) {
             Button("Cancelar", role: .cancel) {}
             Button("Deletar", role: .destructive) {
                 if let logToDelete = logToDelete {
                     logViewModel.deleteLog(logToDelete)
-                    refreshID = UUID() // Atualiza a lista
                 }
             }
         } message: {

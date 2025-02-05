@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct AddLogView: View {
-    var coreDataVM = LogViewModel()
+    @ObservedObject var coreDataVM = LogViewModel()
     @ObservedObject var currentProject: ProjectEntity
     @Environment(\.dismiss) var dismiss
     

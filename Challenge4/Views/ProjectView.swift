@@ -13,10 +13,9 @@ struct ProjectView: View {
                 Text("Logs").tag(1)
                 Text("Projeto").tag(2)
             }
+            .padding(.horizontal)
             .pickerStyle(.segmented)
-            .onAppear {
-                UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color.pink)
-            }
+            .colorMultiply(.pink)
             
             if selectedTab == 1 {
                 LogProjectView(currentProject: currentProject)
@@ -24,7 +23,7 @@ struct ProjectView: View {
                 EditProjectView(currentProject: currentProject)
             }
         }
-        .padding()
+        
         .navigationTitle(currentProject.name ?? "Sem Título")
     }
 }
