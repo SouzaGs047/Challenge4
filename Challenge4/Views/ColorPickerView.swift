@@ -51,7 +51,7 @@ struct ColorPickerView: View {
                             .accessibilityLabel("Aviso: Nenhuma cor adicionada ainda")
                     } else {
                         ForEach(viewModel.colors, id: \ .self) { ColorItemEntity in
-                            if let hex = ColorItemEntity.hex, let validColor = Color(hex: hex) {
+                            if let hex = ColorItemEntity.hex, let _ = Color(hex: hex) {
                                 CardView(ColorItemEntity: ColorItemEntity, viewModel: viewModel)
                             }
                         }
