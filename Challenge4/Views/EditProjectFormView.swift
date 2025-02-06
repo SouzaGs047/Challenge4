@@ -25,7 +25,7 @@ struct EditProjectFormView: View {
         ScrollView {
             VStack(spacing: 20) {
                 // Exibição da Imagem com texto explicativo
-                ImageView(selectedImages: $selectedImages, isEditing: false)
+                ImageView(selectedImages: $selectedImages)
                     .onTapGesture {
                         // Lógica para selecionar uma nova foto
                         isImagePickerPresented.toggle()
@@ -36,10 +36,8 @@ struct EditProjectFormView: View {
                     // Tipo do Projeto com design customizado no Menu
                     HStack {
                         Text("Tipo")
-                            .font(.headline)
-                            .padding()
                             .foregroundStyle(.accent)
-                            
+                        
                         Spacer()
                         
                         Menu {
@@ -66,65 +64,41 @@ struct EditProjectFormView: View {
                     // Objetivo do Projeto
                     VStack(alignment: .leading) {
                         Text("Objetivo")
-                            .font(.headline)
-                            .padding()
                             .foregroundStyle(.accent)
                         
-                        ZStack(alignment: .topLeading) {
-                            // Placeholder que só aparece se o texto estiver vazio
-                            if coreDataVM.objective.isEmpty {
-                                Text("Escreva o objetivo")
-                                    .foregroundColor(.gray)
-                                    .padding(.horizontal, 12)
-                                    .padding(.vertical, 8)
-                            }
-                            
-                            TextEditor(text: $coreDataVM.objective)
-                                .frame(height: 100)
-                                .padding(8)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .fill(Color.white)
-                                )
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .stroke(Color.gray, lineWidth: 1)
-                                )
-                                .scrollContentBackground(.hidden)
-                                .disabled(!isSaved) 
-                        }
+                        TextEditor(text: $coreDataVM.objective)
+                            .frame(height: 100)
+                            .padding(8)
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(Color.white)
+                            )
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color.gray, lineWidth: 1)
+                            )
+                            .scrollContentBackground(.hidden)
+                            .disabled(!isSaved) // Desabilita quando estiver no modo de visualização
                     }
-
                     
                     // Data de início e prazo final
-                    HStack(spacing: 25) {
-                        DatePickerField(title: " Data de início", date: $coreDataVM.startDate)
-                        DatePickerField(title: "   Prazo Final", date: $coreDataVM.finalDate)
+                    HStack(spacing: 20) {
+                        DatePickerField(title: "Data de início", date: $coreDataVM.startDate)
+                        DatePickerField(title: "Prazo Final", date: $coreDataVM.finalDate)
                     }
-                    .frame(maxWidth: .infinity, alignment: .center)
                     .disabled(!isSaved) // Desabilita os campos de data quando não estiver no modo de edição
-                    .padding()
-                    .cornerRadius(15)
-                }
-                
-                // Branding Section dentro do DisclosureGroup
-                DisclosureGroup {
-                    BrandingView(currentProject: currentProject)
-                        .padding(.top, 10)
-                } label: {
-                    Text("Configurações de Branding")
-                        .foregroundColor(.white) // Define a cor do texto como branca
-                        .bold()
-                        .padding()
-                        .frame(maxWidth: .infinity) // Garante que o fundo cubra toda a largura
-                        .background(Color.pink) // Definåe o fundo rosa
-                        .cornerRadius(10)
                 }
                 .padding()
-                .background(Color.pink.opacity(0.1)) // Fundo geral com uma transparência leve
+                .cornerRadius(15)
+                
+                // Branding Section dentro do DisclosureGroup
+                DisclosureGroup("Configurações de Branding", isExpanded: $isBrandingExpanded) {
+                    BrandingView(currentProject: currentProject)
+                }
+                .padding()
+                .background(Color.gray.opacity(0.1))
                 .cornerRadius(10)
                 .animation(.easeInOut, value: isBrandingExpanded)
-
             }
             .padding()
         }
@@ -182,12 +156,11 @@ struct EditProjectFormView: View {
 
 // Componente para exibir a imagem com texto explicativo
 struct ImageView: View {
-    @Binding var selectedImages: [UIImage]  // Imagens selecionadas
-    var isEditing: Bool  // Define se o modo de edição está ativado
+    @Binding var selectedImages: [UIImage]  // Alteração para um array de UIImage
     
     var body: some View {
         VStack {
-            ZStack(alignment: .topTrailing) {
+            ZStack {
                 if let firstImage = selectedImages.first {
                     Image(uiImage: firstImage)
                         .resizable()
@@ -200,7 +173,6 @@ struct ImageView: View {
                         .symbolRenderingMode(.hierarchical)
                         .foregroundStyle(.gray)
                         .frame(width: 200, height: 200)
-                        .clipShape(RoundedRectangle(cornerRadius: 20))
                 }
                 
                 // Texto explicativo para o usuário
@@ -214,20 +186,6 @@ struct ImageView: View {
                         .cornerRadius(5)
                         .padding(5)
                         .frame(maxWidth: .infinity, alignment: .center)
-                }
-                
-                // Botão de Remover (aparece apenas se houver imagem e o modo de edição estiver ativo)
-                if !selectedImages.isEmpty && isEditing {
-                    Button(action: {
-                        selectedImages.removeAll() // Remove todas as imagens
-                    }) {
-                        Image(systemName: "trash")
-                            .foregroundColor(.white)
-                            .padding(10)
-                            .background(Color.red)
-                            .clipShape(Circle())
-                    }
-                    .padding(10)
                 }
             }
         }
@@ -250,9 +208,3 @@ struct DatePickerField: View {
         .frame(maxWidth: .infinity)
     }
 }
-
-
-//#Preview {
-//    EditProjectFormView(selectedImages: .constant([UIImage()]))
-//        .environmentObject(ProjectViewModel())
-//}
