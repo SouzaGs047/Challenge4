@@ -10,9 +10,8 @@ struct LogProjectView: View {
 
     var logsArray: [LogEntity] {
         let set = currentProject.logs as? Set<LogEntity> ?? []
-        return set.sorted { $0.date ?? Date() > $1.date ?? Date() } // Agora exibe os mais recentes primeiro
+        return set.sorted { $0.date ?? Date() > $1.date ?? Date() } // Exibe os mais recentes primeiro
     }
-
 
     var body: some View {
         VStack {
@@ -25,6 +24,25 @@ struct LogProjectView: View {
                             Text(log.textContent ?? "Sem conteúdo")
                                 .font(.subheadline)
                                 .foregroundStyle(.gray)
+
+                            // Verificar se existem imagens associadas ao log
+                            if let imagesSet = log.images as? Set<LogImageEntity>, !imagesSet.isEmpty {
+                                ScrollView(.horizontal) {
+                                    HStack {
+                                        ForEach(imagesSet.sorted { $0.imageData?.count ?? 0 > $1.imageData?.count ?? 0 }, id: \.self) { imageEntity in
+                                            if let imageData = imageEntity.imageData,
+                                               let uiImage = UIImage(data: imageData) {
+                                                Image(uiImage: uiImage)
+                                                    .resizable()
+                                                    .scaledToFill()
+                                                    .frame(width: 75, height: 75)
+                                                    .clipShape(RoundedRectangle(cornerSize: CGSize(width: 10, height: 10)))
+                                                    .clipped()
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                     .contextMenu {

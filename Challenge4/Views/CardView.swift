@@ -25,8 +25,8 @@ struct CardView: View {
                             Text(ColorItemEntity.hex ?? "#000000")
                                 
                                 .font(.system(size: 15).bold())
-                                .foregroundColor(.white)
-                                .foregroundColor(.white.opacity(0.8))
+                                .foregroundStyle(.white)
+                                .foregroundStyle(.white.opacity(0.8))
                         }
                         .padding()
                     )

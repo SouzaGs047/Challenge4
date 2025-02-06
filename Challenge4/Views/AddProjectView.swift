@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AddProjectView: View {
-    @ObservedObject var coreDataVM = ProjectViewModel()
+    @ObservedObject var coreDataVM: ProjectViewModel
     @State var nameProjectTextField: String = ""
     @Environment(\.dismiss) var dismiss
     
@@ -23,6 +23,7 @@ struct AddProjectView: View {
                 Spacer()
             }
             TextField("Nome do projeto aqui...", text: $nameProjectTextField)
+                .foregroundStyle(.black)
                 .font(.headline)
                 .padding(.leading)
                 .frame(height: 55)
@@ -31,18 +32,16 @@ struct AddProjectView: View {
                 .padding(.horizontal)
             
             Button(action: {
-                guard !nameProjectTextField.isEmpty else {return}
+                guard !nameProjectTextField.isEmpty else { return }
                 coreDataVM.addProject(name: nameProjectTextField)
-                nameProjectTextField = ""
                 dismiss()
-            }
-                   , label: {
+            }, label: {
                 Text("Criar")
                     .font(.headline)
                     .foregroundStyle(.white)
                     .frame(height: 55)
                     .frame(maxWidth: .infinity)
-                    .background(.blue)
+                    .background(.accent)
                     .background(in: RoundedRectangle(cornerSize: CGSize(width: 20, height: 10)))
             })
             .padding(.horizontal)
@@ -51,6 +50,7 @@ struct AddProjectView: View {
         Spacer()
     }
 }
+
 
 #Preview {
     AddProjectView(coreDataVM: ProjectViewModel())

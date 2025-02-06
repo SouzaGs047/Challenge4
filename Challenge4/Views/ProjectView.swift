@@ -15,12 +15,13 @@ struct ProjectView: View {
             }
             .padding(.horizontal)
             .pickerStyle(.segmented)
-            .colorMultiply(.pink)
+            .colorMultiply(.accent)
             
             if selectedTab == 1 {
                 LogProjectView(currentProject: currentProject)
             } else {
                 EditProjectView(currentProject: currentProject)
+                    .environmentObject(coreDataVM)
             }
         }
         

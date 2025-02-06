@@ -22,7 +22,7 @@ struct FontPickerView: View {
                     Text("Texto")
                         .font(.title3)
                         .bold()
-                        .foregroundColor(Color.pink)
+                        .foregroundStyle(Color.accent)
                     Spacer()
                     Button("Adicionar") {
                         if !fontName.isEmpty && selectedCategory != "Selecione" {
@@ -38,7 +38,7 @@ struct FontPickerView: View {
                     .padding(.vertical, 8)
                     .padding(.horizontal, 16)
                     .background(Color(red: 0.8, green: 0, blue: 0.3))
-                    .foregroundColor(.white)
+                    .foregroundStyle(.white)
                     .cornerRadius(8)
                     .disabled(selectedCategory == "Selecione")
                     .accessibilityLabel("Botão para adicionar uma nova fonte")
@@ -67,7 +67,7 @@ struct FontPickerView: View {
             
             if viewModel.fonts.isEmpty {
                 Text("Nenhuma cor adicionada ainda.")
-                    .foregroundColor(.gray)
+                    .foregroundStyle(.gray)
                     .italic()
                
 

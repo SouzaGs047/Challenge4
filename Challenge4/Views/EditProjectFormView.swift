@@ -3,6 +3,10 @@ import PhotosUI
 
 struct EditProjectFormView: View {
     @EnvironmentObject var coreDataVM: ProjectViewModel
+    @ObservedObject var currentProject: ProjectEntity // Novo parâmetro
+    
+    @StateObject private var colorViewModel = ColorViewModel()
+    @StateObject private var fontViewModel = FontViewModel()
     
     @Binding var selectedImages: [UIImage]  // Alteração para um array de UIImage
     
@@ -35,7 +39,7 @@ struct EditProjectFormView: View {
                     // Tipo do Projeto
                     HStack {
                         Text("Tipo")
-                            .foregroundColor(.pink)
+                            .foregroundStyle(.accent)
                         
                         Spacer()
                         
@@ -45,19 +49,19 @@ struct EditProjectFormView: View {
                             }
                         }
                         .pickerStyle(.menu)
-                        .foregroundColor(.primary)
-                        .disabled(isSaved) // Desabilita o Picker quando estiver no modo de visualização
+                        .foregroundStyle(.primary)
+                        .disabled(!isSaved) // Desabilita o Picker quando estiver no modo de visualização
                     }
                     
                     // Objetivo do Projeto
                     VStack(alignment: .leading) {
                         Text("Objetivo")
-                            .foregroundColor(.pink)
+                            .foregroundStyle(.accent)
                         
                         TextEditor(text: $coreDataVM.objective)
                             .frame(height: 100)
                             .scrollContentBackground(.hidden)
-                            .disabled(isSaved) // Desabilita o TextEditor quando estiver no modo de visualização
+                            .disabled(!isSaved) // Desabilita o TextEditor quando estiver no modo de visualização
                     }
                     
                     // Data de início e prazo final
@@ -65,14 +69,14 @@ struct EditProjectFormView: View {
                         DatePickerField(title: "Data de início", date: $coreDataVM.startDate)
                         DatePickerField(title: "Prazo Final", date: $coreDataVM.finalDate)
                     }
-                    .disabled(isSaved) // Desabilita os campos de data quando estiver no modo de visualização
+                    .disabled(!isSaved) // Desabilita os campos de data quando estiver no modo de visualização
                 }
                 .padding()
                 .cornerRadius(15)
                 
                 // Branding Section
                 DisclosureGroup("Configurações de Branding", isExpanded: $isBrandingExpanded) {
-                    BrandingView()
+                    BrandingView(colorViewModel: colorViewModel, fontViewModel: fontViewModel)
                 }
                 .padding()
                 .background(Color.gray.opacity(0.1))
@@ -85,15 +89,15 @@ struct EditProjectFormView: View {
             trailing: Button(action: {
                 if isSaved {
                     // Modo de Edição: muda para o modo de edição
-                    isSaved = false
+                    isSaved.toggle()
                 } else {
                     // Modo de Salvamento: salva os dados
                     saveData()
                 }
             }) {
-                Text(isSaved ? "Editar" : "Salvar")
+                Text(isSaved ? "Salvar" : "Editar")
                     .bold()
-                    .foregroundColor(.pink)
+                    .foregroundStyle(.accent)
             }
         )
         .sheet(isPresented: $isImagePickerPresented) {
@@ -102,20 +106,23 @@ struct EditProjectFormView: View {
         }
     }
     
-    // Função para salvar os dados
     func saveData() {
-        // Aqui você pode implementar a lógica de salvar os dados (como uma chamada a CoreData ou API)
-        // Exemplo de salvamento de dados:
-        print("Dados salvos:")
-        print("Tipo: \(coreDataVM.type)")
-        print("Objetivo: \(coreDataVM.objective)")
-        print("Data de Início: \(coreDataVM.startDate)")
-        print("Prazo Final: \(coreDataVM.finalDate)")
-        
-        // Depois de salvar os dados, altere o estado para 'salvo'
-        isSaved = true
-    }
-}
+         // Converter imagem para Data
+         let imageData = selectedImages.first?.jpegData(compressionQuality: 1.0)
+         
+         // Atualizar o projeto
+         coreDataVM.updateProject(
+             currentProject,
+             type: coreDataVM.type,
+             objective: coreDataVM.objective,
+             startDate: coreDataVM.startDate,
+             finalDate: coreDataVM.finalDate,
+             image: imageData
+         )
+         
+         isSaved.toggle()
+     }
+ }
 
 // Componente para exibir a imagem com texto explicativo
 struct ImageView: View {
@@ -134,14 +141,14 @@ struct ImageView: View {
                     Image("DefaultImage")
                         .resizable()
                         .symbolRenderingMode(.hierarchical)
-                        .foregroundColor(.gray)
+                        .foregroundStyle(.gray)
                         .frame(width: 200, height: 200)
                 }
                 
                 // Texto explicativo para o usuário
                 if selectedImages.isEmpty {
                     Text("Clique para adicionar uma foto")
-                        .foregroundColor(.white)
+                        .foregroundStyle(.white)
                         .font(.caption)
                         .bold()
                         .padding(5)
@@ -163,16 +170,16 @@ struct DatePickerField: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(title)
-                .foregroundColor(.pink)
+                .foregroundStyle(.accent)
             DatePicker("", selection: $date, displayedComponents: .date)
                 .labelsHidden()
-                .foregroundColor(.primary)
+                .foregroundStyle(.primary)
         }
         .frame(maxWidth: .infinity)
     }
 }
 
-#Preview {
-    EditProjectFormView(selectedImages: .constant([UIImage()]))
-        .environmentObject(ProjectViewModel())
-}
+//#Preview {
+//    EditProjectFormView(selectedImages: .constant([UIImage()]))
+//        .environmentObject(ProjectViewModel())
+//}

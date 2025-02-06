@@ -10,20 +10,16 @@ import CoreData
 
 
 struct BrandingView: View {
-    @Environment(\ .managedObjectContext) private var viewContext
-    @StateObject private var colorViewModel = ColorViewModel()
-    @StateObject private var fontViewModel = FontViewModel()
+    @ObservedObject var colorViewModel: ColorViewModel
+    @ObservedObject var fontViewModel: FontViewModel
     
     var body: some View {
-        
-        
         VStack{
             ColorPickerView(viewModel: colorViewModel)
             Divider()
             FontPickerView(viewModel: fontViewModel)
             Divider()
         }
-            .environment(\ .managedObjectContext, viewContext)
         }
 }
 //#Preview {

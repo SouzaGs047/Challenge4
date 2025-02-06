@@ -14,9 +14,7 @@ struct Challenge4App: App {
         WindowGroup {
             NavigationStack {
                 ContentView()
-                    
             }
-            .tint(.pink)
         }
     }
 }

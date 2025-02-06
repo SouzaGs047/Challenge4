@@ -25,12 +25,40 @@ class ProjectViewModel: ObservableObject {
     }
 
     
+    
+    func loadProjectData(project: ProjectEntity) {
+           type = project.type ?? ""
+           objective = project.objective ?? ""
+           startDate = project.startDate ?? Date()
+           finalDate = project.finalDate ?? Date()
+       }
+
+       func updateProject(_ project: ProjectEntity, type: String, objective: String, startDate: Date, finalDate: Date, image: Data?) {
+           project.type = type
+           project.objective = objective
+           project.startDate = startDate
+           project.finalDate = finalDate
+           project.image = image
+           saveData()
+       }
+    
+    
+    
+    
+    
     // Função separada para adicionar apenas o nome
-        func addProject(name: String) {
-            let newProject = ProjectEntity(context: context)
-            newProject.name = name
-            saveData()
+    func addProject(name: String) {
+        let newProject = ProjectEntity(context: context)
+        newProject.name = name
+        
+        do {
+            try context.save()
+            fetchProjects() // Atualiza a lista após a adição
+        } catch {
+            print("Erro ao salvar projeto: \(error.localizedDescription)")
         }
+    }
+
     
     func addProjects(name: String, type: String, objective: String, startDate: Date, finalDate: Date, image: Data?) {
         let newProject = ProjectEntity(context: context)
@@ -43,21 +71,19 @@ class ProjectViewModel: ObservableObject {
         saveData()
     }
     
-    func updateProject(_ project: ProjectEntity, type: String, objective: String, startDate: Date, finalDate: Date, image: Data?) {
-        project.type = type
-        project.objective = objective
-        project.startDate = startDate
-        project.finalDate = finalDate
-        project.image = image
-        saveData()
-    }
     
-    func deleteProject(indexSet: IndexSet) {
-        for index in indexSet {
-            context.delete(savedEntities[index])
+    func deleteProject(_ project: ProjectEntity) {
+        guard let context = project.managedObjectContext else { return }
+        context.delete(project)
+
+        do {
+            try context.save()
+            fetchProjects() // Atualiza a lista após deletar
+        } catch {
+            print("Erro ao deletar o projeto: \(error.localizedDescription)")
         }
-        saveData()
     }
+
     
     private func saveData() {
         do {

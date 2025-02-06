@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct AddLogView: View {
-    @ObservedObject var coreDataVM = LogViewModel()
+    @StateObject var coreDataVM = LogViewModel()
     @ObservedObject var currentProject: ProjectEntity
     @Environment(\.dismiss) var dismiss
     
@@ -33,15 +33,17 @@ struct AddLogView: View {
             } label: {
                 HStack {
                     Text(selectedOption ?? "O que você quer registrar agora?")
-                        .foregroundColor(.pink)
+                        .foregroundStyle(.accent)
                         .frame(maxWidth: .infinity, alignment: .center)
                     Spacer()
                     Image(systemName: "chevron.down")
-                        .foregroundColor(.primary)
+                        .foregroundStyle(.primary)
                 }
                 .padding()
-                .background(Color(UIColor.systemGray6))
-                .cornerRadius(8)
+                .background(
+                    RoundedRectangle(cornerRadius: 15)
+                        .stroke(.white, lineWidth: 1)
+                )
             }
             .padding(.horizontal)
             
@@ -49,19 +51,22 @@ struct AddLogView: View {
             TextEditor(text: $textContentLog)
                 .placeholder(when: textContentLog.isEmpty) {
                     Text("Clique aqui para digitar")
-                        .foregroundColor(.gray)
+                        .foregroundStyle(.white)
                 }
-                .frame(maxHeight: 200)
-                .padding()
-                .background(Color(UIColor.systemGray6))
-                .cornerRadius(8)
+                .padding(.vertical, 5)
+                .padding(.horizontal)
+                .scrollContentBackground(.hidden)
+                .background(
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(.rosaPreto) // Fundo com canto arredondado
+                )
+                .frame(height: 250)
                 .padding(.horizontal)
             
-            // Imagens
-            VStack(spacing: 0) {
-                HStack(spacing: 4) {
+            
+                HStack{
                     Text("Imagens")
-                        .foregroundColor(.pink)
+                        .foregroundStyle(.accent)
                         .font(.system(size: 20, weight: .bold))
                         .padding(.trailing, 60.0)
                     Spacer()
@@ -70,12 +75,11 @@ struct AddLogView: View {
                         showImagePicker = true
                     }) {
                         Text("Clique aqui para adicionar")
-                            .foregroundColor(.gray)
+                            .foregroundStyle(.gray)
                             .font(.system(size: 16))
                     }
-                    Spacer()
                 }
-                .padding()
+                .padding(.horizontal)
                 
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 10) {
@@ -92,7 +96,7 @@ struct AddLogView: View {
                 }
             }
             .padding(.bottom)
-        }
+        
         .sheet(isPresented: $showImagePicker) {
             PhotoPicker(selectedImages: $selectedImages)
         }
@@ -112,7 +116,7 @@ struct AddLogView: View {
                     
                     dismiss()
                 }
-                .foregroundColor(.pink)
+                .foregroundStyle(.accent)
             }
         }
         .alert("Deletar Log", isPresented: $showDeleteAlert) {

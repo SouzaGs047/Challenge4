@@ -17,7 +17,7 @@ struct ColorPickerView: View {
                 Text("Cores")
                     .font(.headline)
                     .bold()
-                    .foregroundColor(Color.pink)
+                    .foregroundStyle(Color.accent)
                     .accessibilityLabel("Título: Cores")
             }
             
@@ -37,7 +37,7 @@ struct ColorPickerView: View {
                 .padding(.vertical, 8)
                 .padding(.horizontal, 16)
                 .background(Color(red: 0.8, green: 0, blue: 0.3))
-                .foregroundColor(.white)
+                .foregroundStyle(.white)
                 .cornerRadius(8)
                 .accessibilityLabel("Botão para adicionar uma nova cor")
             }
@@ -46,7 +46,7 @@ struct ColorPickerView: View {
                 HStack(spacing: 15) {
                     if viewModel.colors.isEmpty {
                         Text("Nenhuma cor adicionada ainda.")
-                            .foregroundColor(.gray)
+                            .foregroundStyle(.gray)
                             .italic()
                             .accessibilityLabel("Aviso: Nenhuma cor adicionada ainda")
                     } else {

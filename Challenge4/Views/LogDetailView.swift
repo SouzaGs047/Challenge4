@@ -15,6 +15,7 @@ struct LogDetailView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
+                Divider()
                 Menu {
                     ForEach(topics, id: \.self) { topic in
                         Button(topic) { viewModel.selectedOption = topic }
@@ -23,13 +24,15 @@ struct LogDetailView: View {
                     HStack {
                         Spacer()
                         Text(viewModel.selectedOption )
-                            .foregroundColor(.pink)
+                            .foregroundStyle(.accent)
                         Spacer()
-                        Image(systemName: "chevron.down").foregroundColor(.primary)
+                        Image(systemName: "chevron.down").foregroundStyle(.primary)
                     }
                     .padding()
-                    .background(Color(UIColor.systemGray6))
-                    .cornerRadius(8)
+                    .background(
+                        RoundedRectangle(cornerRadius: 15)
+                            .stroke(.white, lineWidth: 1)
+                    )
                 }
                 .disabled(!isEditing)
                 .padding(.horizontal)
@@ -38,7 +41,7 @@ struct LogDetailView: View {
                 
                 
                 TextEditor(text: $viewModel.editedTextContent)
-                    .foregroundColor(.white)
+                    .foregroundStyle(.white)
                     .padding(.vertical, 5)
                     .padding(.horizontal)
                     .scrollContentBackground(.hidden)
@@ -49,15 +52,15 @@ struct LogDetailView: View {
                     .frame(height: 250)
                     .padding(.horizontal)
                     .disabled(!isEditing)
-
+  
                 
                 
                 HStack {
-                    Text("Imagens").foregroundColor(.pink).font(.system(size: 20, weight: .bold))
+                    Text("Imagens").foregroundStyle(.accent).font(.system(size: 20, weight: .bold))
                     Spacer()
                     if (isEditing) {
                         Button("Clique aqui para adicionar") { showImagePicker = true }
-                            .foregroundColor(.gray).font(.system(size: 16))
+                            .foregroundStyle(.gray).font(.system(size: 16))
                         Spacer()
                     }
                 }
