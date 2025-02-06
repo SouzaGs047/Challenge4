@@ -59,6 +59,11 @@ class ProjectViewModel: ObservableObject {
         saveData()
     }
     
+    func deleteProject(_ project: ProjectEntity) {
+        context.delete(project) // Deleta o projeto do Core Data
+        saveData() // Salva as alterações
+    }
+    
     private func saveData() {
         do {
             try PersistenceController.shared.viewContext.save()

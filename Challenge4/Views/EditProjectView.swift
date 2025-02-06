@@ -1,3 +1,4 @@
+//
 //  EditProjectView.swift
 //  Challenge4
 //
@@ -7,7 +8,6 @@
 import SwiftUI
 
 struct EditProjectView: View {
-    @ObservedObject var currentProject: ProjectEntity  // Adiciona o currentProject como ObservedObject
     @State private var selectedImages: [UIImage] = []  // Alterado para um array de UIImage
     @StateObject private var coreDataVM = ProjectViewModel()
 
@@ -17,4 +17,8 @@ struct EditProjectView: View {
                 .environmentObject(coreDataVM)
         }
     }
+}
+
+#Preview {
+    EditProjectView()
 }

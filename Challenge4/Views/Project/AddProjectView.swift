@@ -22,11 +22,11 @@ struct AddProjectView: View {
                     .padding(.leading)
                 Spacer()
             }
-            TextField("Nome do projeto aqui...", text: $nameProjectTextField)
+            TextField("Nome do projeto aqui...", text:  $nameProjectTextField)
                 .font(.headline)
                 .padding(.leading)
                 .frame(height: 55)
-                .background(.white)
+               // .background(.white)
                 .clipShape(RoundedRectangle(cornerSize: CGSize(width: 20, height: 10)))
                 .padding(.horizontal)
             
@@ -42,7 +42,7 @@ struct AddProjectView: View {
                     .foregroundStyle(.white)
                     .frame(height: 55)
                     .frame(maxWidth: .infinity)
-                    .background(.blue)
+                    .background(.pink)
                     .background(in: RoundedRectangle(cornerSize: CGSize(width: 20, height: 10)))
             })
             .padding(.horizontal)

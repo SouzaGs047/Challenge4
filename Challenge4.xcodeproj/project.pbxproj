@@ -11,10 +11,10 @@
 		2E8571782D5287EA00CD19D8 /* LogDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8571772D5287E300CD19D8 /* LogDetailView.swift */; };
 		2E8B6E0C2D52A2EF00714620 /* ColorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8B6E0B2D52A2EF00714620 /* ColorViewModel.swift */; };
 		2E8B6E0E2D52A2FF00714620 /* FontViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8B6E0D2D52A2FF00714620 /* FontViewModel.swift */; };
-		2E8B6E102D53FDD700714620 /* ContenrView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8B6E0F2D53FDD700714620 /* ContenrView2.swift */; };
-		2EC02B8E2D53B0DD00D73B29 /* ProjectCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC02B8D2D53B0D400D73B29 /* ProjectCreationView.swift */; };
 		2EC02B902D53B36700D73B29 /* EditProjectFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC02B8F2D53B35300D73B29 /* EditProjectFormView.swift */; };
 		2EC02B922D53CE4A00D73B29 /* ProjectImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC02B912D53CE3C00D73B29 /* ProjectImagePicker.swift */; };
+		2EC02B942D550F4000D73B29 /* Splash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC02B932D550F3A00D73B29 /* Splash.swift */; };
+		2EC02B982D551D0300D73B29 /* TesteBrandingJunto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC02B972D551CF900D73B29 /* TesteBrandingJunto.swift */; };
 		49B126D02D52A3EE0094880E /* BrandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B126CF2D52A3EE0094880E /* BrandingView.swift */; };
 		49B126D22D52A4120094880E /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B126D12D52A4120094880E /* CardView.swift */; };
 		49B126D42D52A42A0094880E /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B126D32D52A42A0094880E /* ColorPickerView.swift */; };
@@ -26,7 +26,6 @@
 		AE41AC152D4D6758008F52AB /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE41AC142D4D6758008F52AB /* PersistenceController.swift */; };
 		AE41AC172D4D692A008F52AB /* LogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE41AC162D4D692A008F52AB /* LogViewModel.swift */; };
 		AE4708C52D51433900B19740 /* LogProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4708C42D51433900B19740 /* LogProjectView.swift */; };
-		AE4708C72D51435200B19740 /* EditProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4708C62D51435200B19740 /* EditProjectView.swift */; };
 		AEEA64482D4AAE0900391D73 /* Challenge4App.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEA64472D4AAE0900391D73 /* Challenge4App.swift */; };
 		AEEA644A2D4AAE0900391D73 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEA64492D4AAE0900391D73 /* ContentView.swift */; };
 		AEEA644C2D4AAE0A00391D73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEEA644B2D4AAE0A00391D73 /* Assets.xcassets */; };
@@ -40,10 +39,10 @@
 		2E8571772D5287E300CD19D8 /* LogDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDetailView.swift; sourceTree = "<group>"; };
 		2E8B6E0B2D52A2EF00714620 /* ColorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorViewModel.swift; sourceTree = "<group>"; };
 		2E8B6E0D2D52A2FF00714620 /* FontViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontViewModel.swift; sourceTree = "<group>"; };
-		2E8B6E0F2D53FDD700714620 /* ContenrView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContenrView2.swift; sourceTree = "<group>"; };
-		2EC02B8D2D53B0D400D73B29 /* ProjectCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCreationView.swift; sourceTree = "<group>"; };
 		2EC02B8F2D53B35300D73B29 /* EditProjectFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectFormView.swift; sourceTree = "<group>"; };
 		2EC02B912D53CE3C00D73B29 /* ProjectImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectImagePicker.swift; sourceTree = "<group>"; };
+		2EC02B932D550F3A00D73B29 /* Splash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Splash.swift; sourceTree = "<group>"; };
+		2EC02B972D551CF900D73B29 /* TesteBrandingJunto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesteBrandingJunto.swift; sourceTree = "<group>"; };
 		49B126CF2D52A3EE0094880E /* BrandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandingView.swift; sourceTree = "<group>"; };
 		49B126D12D52A4120094880E /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		49B126D32D52A42A0094880E /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
@@ -55,7 +54,6 @@
 		AE41AC142D4D6758008F52AB /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		AE41AC162D4D692A008F52AB /* LogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewModel.swift; sourceTree = "<group>"; };
 		AE4708C42D51433900B19740 /* LogProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogProjectView.swift; sourceTree = "<group>"; };
-		AE4708C62D51435200B19740 /* EditProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectView.swift; sourceTree = "<group>"; };
 		AEEA64442D4AAE0900391D73 /* Challenge4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Challenge4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEEA64472D4AAE0900391D73 /* Challenge4App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge4App.swift; sourceTree = "<group>"; };
 		AEEA64492D4AAE0900391D73 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -76,6 +74,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E8B6E132D5408BA00714620 /* Logs */ = {
+			isa = PBXGroup;
+			children = (
+				AE4708C42D51433900B19740 /* LogProjectView.swift */,
+				AE41AC112D4D4F21008F52AB /* AddLogView.swift */,
+				2E8571772D5287E300CD19D8 /* LogDetailView.swift */,
+			);
+			path = Logs;
+			sourceTree = "<group>";
+		};
+		2E8B6E142D5408F000714620 /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				AE41AC0F2D4D41F3008F52AB /* AddProjectView.swift */,
+				2EC02B8F2D53B35300D73B29 /* EditProjectFormView.swift */,
+			);
+			path = Project;
+			sourceTree = "<group>";
+		};
+		2E8B6E152D54093E00714620 /* Branding */ = {
+			isa = PBXGroup;
+			children = (
+				49B126D32D52A42A0094880E /* ColorPickerView.swift */,
+				2EC02B972D551CF900D73B29 /* TesteBrandingJunto.swift */,
+				49B126D12D52A4120094880E /* CardView.swift */,
+				49B126D52D52A4430094880E /* FontPickerView.swift */,
+				49B126CF2D52A3EE0094880E /* BrandingView.swift */,
+			);
+			path = Branding;
+			sourceTree = "<group>";
+		};
 		AE41AC132D4D51EB008F52AB /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -93,18 +122,11 @@
 		AE41AC182D4D6957008F52AB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				49B126CF2D52A3EE0094880E /* BrandingView.swift */,
-				2EC02B8D2D53B0D400D73B29 /* ProjectCreationView.swift */,
-				2E8571772D5287E300CD19D8 /* LogDetailView.swift */,
-				AE41AC112D4D4F21008F52AB /* AddLogView.swift */,
-				AE41AC0F2D4D41F3008F52AB /* AddProjectView.swift */,
-				49B126D12D52A4120094880E /* CardView.swift */,
-				49B126D32D52A42A0094880E /* ColorPickerView.swift */,
-				49B126D52D52A4430094880E /* FontPickerView.swift */,
+				2E8B6E152D54093E00714620 /* Branding */,
+				2E8B6E142D5408F000714620 /* Project */,
+				2E8B6E132D5408BA00714620 /* Logs */,
 				AE41AC0D2D4D3EBB008F52AB /* ProjectView.swift */,
-				2EC02B8F2D53B35300D73B29 /* EditProjectFormView.swift */,
-				AE4708C42D51433900B19740 /* LogProjectView.swift */,
-				AE4708C62D51435200B19740 /* EditProjectView.swift */,
+				2EC02B932D550F3A00D73B29 /* Splash.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -141,7 +163,6 @@
 				AE41AC132D4D51EB008F52AB /* ViewModels */,
 				AEEA64472D4AAE0900391D73 /* Challenge4App.swift */,
 				AEEA64492D4AAE0900391D73 /* ContentView.swift */,
-				2E8B6E0F2D53FDD700714620 /* ContenrView2.swift */,
 				AEEA644B2D4AAE0A00391D73 /* Assets.xcassets */,
 				AEEA64522D4AAE0A00391D73 /* ProjectsContainer.xcdatamodeld */,
 				AEEA644D2D4AAE0A00391D73 /* Preview Content */,
@@ -230,8 +251,6 @@
 				49B126D02D52A3EE0094880E /* BrandingView.swift in Sources */,
 				AE41AC102D4D41F3008F52AB /* AddProjectView.swift in Sources */,
 				2E8B6E0C2D52A2EF00714620 /* ColorViewModel.swift in Sources */,
-				2E8B6E102D53FDD700714620 /* ContenrView2.swift in Sources */,
-				2EC02B8E2D53B0DD00D73B29 /* ProjectCreationView.swift in Sources */,
 				AE41AC152D4D6758008F52AB /* PersistenceController.swift in Sources */,
 				2E8571782D5287EA00CD19D8 /* LogDetailView.swift in Sources */,
 				AE41AC122D4D4F21008F52AB /* AddLogView.swift in Sources */,
@@ -241,10 +260,11 @@
 				2EC02B902D53B36700D73B29 /* EditProjectFormView.swift in Sources */,
 				AEEA644A2D4AAE0900391D73 /* ContentView.swift in Sources */,
 				AE41AC0E2D4D3EBB008F52AB /* ProjectView.swift in Sources */,
+				2EC02B982D551D0300D73B29 /* TesteBrandingJunto.swift in Sources */,
+				2EC02B942D550F4000D73B29 /* Splash.swift in Sources */,
 				49B126D42D52A42A0094880E /* ColorPickerView.swift in Sources */,
 				2EC02B922D53CE4A00D73B29 /* ProjectImagePicker.swift in Sources */,
 				49B126D22D52A4120094880E /* CardView.swift in Sources */,
-				AE4708C72D51435200B19740 /* EditProjectView.swift in Sources */,
 				AEEA64542D4AAE0A00391D73 /* ProjectsContainer.xcdatamodeld in Sources */,
 				AE41AC172D4D692A008F52AB /* LogViewModel.swift in Sources */,
 				2E8B6E0E2D52A2FF00714620 /* FontViewModel.swift in Sources */,
@@ -387,6 +407,8 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Design Track";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -422,6 +444,8 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Design Track";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

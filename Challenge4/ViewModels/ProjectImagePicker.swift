@@ -2,57 +2,44 @@ import SwiftUI
 import PhotosUI
 
 
-
-// MARK: - PhotoPicker
 struct ImagePicker: UIViewControllerRepresentable {
     @Binding var selectedImages: [UIImage]
-
+    @Environment(\.presentationMode) var presentationMode
+    
     func makeUIViewController(context: Context) -> PHPickerViewController {
-        var configuration = PHPickerConfiguration()
-        configuration.filter = .images
-        configuration.selectionLimit = 1 // Permitir múltiplas seleções
-
-        let picker = PHPickerViewController(configuration: configuration)
+        var config = PHPickerConfiguration()
+        config.selectionLimit = 1
+        config.filter = .images
+        let picker = PHPickerViewController(configuration: config)
         picker.delegate = context.coordinator
         return picker
     }
-
+    
     func updateUIViewController(_ uiViewController: PHPickerViewController, context: Context) {}
-
+    
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
-
+    
     class Coordinator: NSObject, PHPickerViewControllerDelegate {
-        private let parent: ImagePicker
-
+        let parent: ImagePicker
+        
         init(_ parent: ImagePicker) {
             self.parent = parent
         }
-
+        
         func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-            picker.dismiss(animated: true)
-
-            let dispatchGroup = DispatchGroup()
-
-            for result in results {
-                if result.itemProvider.canLoadObject(ofClass: UIImage.self) {
-                    dispatchGroup.enter()
-                    result.itemProvider.loadObject(ofClass: UIImage.self) { image, error in
-                        if let uiImage = image as? UIImage {
-                            DispatchQueue.main.async {
-                                self.parent.selectedImages.append(uiImage)
-                            }
-                        }
-                        dispatchGroup.leave()
+            parent.presentationMode.wrappedValue.dismiss()
+            
+            guard let result = results.first else { return }
+            
+            result.itemProvider.loadObject(ofClass: UIImage.self) { image, error in
+                if let image = image as? UIImage {
+                    DispatchQueue.main.async {
+                        self.parent.selectedImages = [image]
                     }
                 }
-            }
-
-            dispatchGroup.notify(queue: .main) {
-                print("Todas as imagens foram carregadas.")
             }
         }
     }
 }
-
