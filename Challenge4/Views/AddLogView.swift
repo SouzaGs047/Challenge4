@@ -133,6 +133,7 @@ struct AddLogView: View {
             
             .sheet(isPresented: $showImagePicker) {
                 PhotoPicker(selectedImages: $selectedImages)
+                    .edgesIgnoringSafeArea(.all)
             }
             .navigationTitle("Escrever Log")
             .navigationBarTitleDisplayMode(.inline)

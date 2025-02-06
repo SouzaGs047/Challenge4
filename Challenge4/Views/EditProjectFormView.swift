@@ -83,8 +83,8 @@ struct EditProjectFormView: View {
                     
                     // Data de início e prazo final
                     HStack(spacing: 20) {
-                        DatePickerField(title: "Data de início", date: $coreDataVM.startDate)
-                        DatePickerField(title: "Prazo Final", date: $coreDataVM.finalDate)
+                        DatePickerField(title: " Data de início", date: $coreDataVM.startDate)
+                        DatePickerField(title: "  Prazo Final", date: $coreDataVM.finalDate)
                     }
                     .disabled(!isSaved) // Desabilita os campos de data quando não estiver no modo de edição
                 }
@@ -118,10 +118,10 @@ struct EditProjectFormView: View {
         .navigationBarItems(
             trailing: Button(action: {
                 if isSaved {
-                    // Modo de edição ativo: salva os dados e sai do modo de edição
+                    
                     saveData()
                 } else {
-                    // Entra no modo de edição
+                    
                     isSaved.toggle()
                 }
             }) {
@@ -131,9 +131,10 @@ struct EditProjectFormView: View {
             }
         )
         .sheet(isPresented: $isImagePickerPresented) {
-            // Apresenta o ImagePicker
             ImagePicker(selectedImages: $selectedImages)
+                .edgesIgnoringSafeArea(.all)
         }
+
     }
     
     func saveData() {

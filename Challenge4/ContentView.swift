@@ -69,9 +69,8 @@ struct ContentView: View {
             .sheet(isPresented: $showAddProjectSheet) {
                 AddProjectView(coreDataVM: coreDataVM)
             }
-            // Atualiza os dados do Core Data sempre que a tela reaparecer
             .onAppear {
-                coreDataVM.fetchProjects() // Certifique-se de ter este método no seu ViewModel para buscar os projetos
+                coreDataVM.fetchProjects() 
             }
         }
     }

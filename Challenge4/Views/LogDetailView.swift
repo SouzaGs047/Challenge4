@@ -99,6 +99,7 @@ struct LogDetailView: View {
         }
         .sheet(isPresented: $showImagePicker) {
             PhotoPicker(selectedImages: $viewModel.selectedImages)
+                .edgesIgnoringSafeArea(.all)
         }
     }
 }
