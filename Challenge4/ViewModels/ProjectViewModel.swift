@@ -3,11 +3,11 @@ import CoreData
 class ProjectViewModel: ObservableObject {
     private let context: NSManagedObjectContext
     @Published var savedEntities: [ProjectEntity] = []
-    @Published var type: String = ""  // Adicionando @Published
-        @Published var objective: String = ""
-        @Published var startDate: Date = Date()
-        @Published var finalDate: Date = Date()
-        @Published var image: Data? = nil
+    @Published var type: String = ""
+    @Published var objective: String = ""
+    @Published var startDate: Date = Date()
+    @Published var finalDate: Date = Date()
+    @Published var image: Data? = nil
     
     init(context: NSManagedObjectContext = PersistenceController.shared.viewContext) {
         self.context = context

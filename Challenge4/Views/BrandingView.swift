@@ -10,18 +10,26 @@ import CoreData
 
 
 struct BrandingView: View {
-    @ObservedObject var colorViewModel: ColorViewModel
-    @ObservedObject var fontViewModel: FontViewModel
+    @ObservedObject var currentProject: ProjectEntity
+    @StateObject private var colorViewModel: ColorViewModel
+    @StateObject private var fontViewModel: FontViewModel
+    
+    init(currentProject: ProjectEntity) {
+        self.currentProject = currentProject
+        _colorViewModel = StateObject(wrappedValue: ColorViewModel(project: currentProject))
+        _fontViewModel = StateObject(wrappedValue: FontViewModel(project: currentProject))
+    }
     
     var body: some View {
-        VStack{
+        VStack {
             ColorPickerView(viewModel: colorViewModel)
             Divider()
             FontPickerView(viewModel: fontViewModel)
-            Divider()
+            
         }
-        }
+    }
 }
+
 //#Preview {
 //    BrandingView().environment(\ .managedObjectContext, PersistenceController.preview.container.viewContext)
 //}

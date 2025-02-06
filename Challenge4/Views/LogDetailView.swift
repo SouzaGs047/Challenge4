@@ -41,16 +41,20 @@ struct LogDetailView: View {
                 
                 
                 TextEditor(text: $viewModel.editedTextContent)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(.black)
                     .padding(.vertical, 5)
                     .padding(.horizontal)
                     .scrollContentBackground(.hidden)
                     .background(
                         RoundedRectangle(cornerRadius: 8)
-                            .fill(.rosaPreto) // Fundo com canto arredondado
+                            .stroke(Color.gray, lineWidth: 1)
+                            .fill(.white) // Fundo com canto arredondado
                     )
                     .frame(height: 250)
                     .padding(.horizontal)
+                
+                
+                
                     .disabled(!isEditing)
   
                 
@@ -79,7 +83,7 @@ struct LogDetailView: View {
                     }
                     .padding(.horizontal)
                 }
-            }
+            }.padding(.bottom, 0)
         }
         .navigationTitle("Log")
         .navigationBarTitleDisplayMode(.inline)

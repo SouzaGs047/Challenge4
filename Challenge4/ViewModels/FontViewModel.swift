@@ -1,40 +1,57 @@
 
-//
-//  FontViewModel.swift
-//  TesteColorPicker
-//
-//  Created by Felipe Lau on 03/02/25.
-//
+    //
+    //  FontViewModel.swift
+    //  TesteColorPicker
+    //
+    //  Created by Felipe Lau on 03/02/25.
+    //
+
 import SwiftUI
 import CoreData
 
 class FontViewModel: ObservableObject {
     private let context: NSManagedObjectContext
-    @Published var fonts: [ColorItemEntity] = []
+    @Published var fonts: [FontItemEntity] = []
+    private var project: ProjectEntity
     
-    init(context: NSManagedObjectContext = PersistenceController.shared.viewContext) {
+    init(project: ProjectEntity, context: NSManagedObjectContext = PersistenceController.shared.viewContext) {
         self.context = context
+        self.project = project
         fetchFonts()
     }
     
-    // Buscar fontes no Core Data
+
     func fetchFonts() {
-        let request: NSFetchRequest<ColorItemEntity> = ColorItemEntity.fetchRequest()
-        do {
-            fonts = try context.fetch(request)
-        } catch {
-            print("Erro ao buscar fontes: \(error.localizedDescription)")
+        DispatchQueue.main.async {
+            if let set = self.project.brandingFonts as? Set<FontItemEntity> {
+                self.fonts = set.sorted { ($0.nameFont ?? "") < ($1.nameFont ?? "") }
+                print("📌 Fontes carregadas: \(self.fonts.map { $0.nameFont ?? "Sem nome" })")
+            } else {
+                print("⚠️ Nenhuma fonte encontrada para o projeto.")
+            }
         }
     }
-
+    
     func addFont(nameFont: String, category: String) {
-        let newFont = ColorItemEntity(context: context)
+       
+        if fonts.contains(where: { $0.nameFont == nameFont }) {
+            print("⚠️ Fonte '\(nameFont)' já existe no projeto.")
+            return
+        }
+        
+        let newFont = FontItemEntity(context: context)
         newFont.nameFont = nameFont
         newFont.category = category
+        newFont.project = project
+        
+        project.addToBrandingFonts(newFont) // 🔹 Adiciona ao relacionamento
+        
         saveData()
+        
+        print("✅ Fonte adicionada: \(nameFont), Categoria: \(category)")
     }
-
-
+    
+   
     func deleteFont(at offsets: IndexSet) {
         offsets.forEach { index in
             let font = fonts[index]
@@ -42,13 +59,20 @@ class FontViewModel: ObservableObject {
         }
         saveData()
     }
-
+    
+ 
+    func deleteFont(font: FontItemEntity) {
+        context.delete(font)
+        saveData()
+    }
+    
+  
     private func saveData() {
         do {
             try context.save()
             fetchFonts()
         } catch {
-            print("Erro ao salvar dados: \(error.localizedDescription)")
+            print("❌ Erro ao salvar fontes: \(error.localizedDescription)")
         }
     }
 }

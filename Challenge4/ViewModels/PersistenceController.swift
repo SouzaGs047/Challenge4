@@ -14,6 +14,13 @@ class PersistenceController {
     
     private init() {
         container = NSPersistentContainer(name: "ProjectsContainer")
+
+        
+        
+        let description = container.persistentStoreDescriptions.first
+        description?.shouldMigrateStoreAutomatically = true
+        description?.shouldInferMappingModelAutomatically = true
+
         container.loadPersistentStores { (description, error) in
             if let error = error {
                 print("ERROR LOADING CORE DATA.. \(error)")

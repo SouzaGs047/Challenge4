@@ -24,9 +24,9 @@ struct EditProjectView: View {
         )
         .environmentObject(coreDataVM)
         .onAppear {
-            // Carregar dados existentes no ViewModel
+        
             coreDataVM.loadProjectData(project: currentProject)
-            // Carregar imagens existentes
+           
             if let imageData = currentProject.image {
                 selectedImages = [UIImage(data: imageData)].compactMap { $0 }
             }

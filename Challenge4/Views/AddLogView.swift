@@ -38,32 +38,66 @@ struct AddLogView: View {
                     Spacer()
                     Image(systemName: "chevron.down")
                         .foregroundStyle(.primary)
+                    
                 }
                 .padding()
                 .background(
                     RoundedRectangle(cornerRadius: 15)
                         .stroke(.white, lineWidth: 1)
                 )
+                
             }
             .padding(.horizontal)
             
             // TextEditor para digitar o log
-            TextEditor(text: $textContentLog)
-                .placeholder(when: textContentLog.isEmpty) {
-                    Text("Clique aqui para digitar")
-                        .foregroundStyle(.white)
+            Divider()
+            
+            VStack {
+                ZStack(alignment: .topLeading) {
+                    // Placeholder: só é exibido se o texto estiver vazio
+                    
+                    
+                    // TextEditor para entrada de texto multilinha
+                    TextEditor(text: $textContentLog)
+                        .foregroundColor(.black)
+                        .padding(8)
+                    // Opcional: para alinhar o texto à esquerda (iOS 16+)
+                        .multilineTextAlignment(.leading)
+                    if textContentLog.isEmpty {
+                        Text("Clique aqui para digitar")
+                            .foregroundColor(.gray)
+                            .padding(.vertical,16)
+                            .padding(.horizontal,11)
+                    }
                 }
-                .padding(.vertical, 5)
-                .padding(.horizontal)
-                .scrollContentBackground(.hidden)
+                .frame(height: 200)
                 .background(
                     RoundedRectangle(cornerRadius: 8)
-                        .fill(.rosaPreto) // Fundo com canto arredondado
+                        .fill(Color("rosaPreto")) // Certifique-se de ter essa cor definida ou substitua por outra
                 )
-                .frame(height: 250)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(Color.gray, lineWidth: 1)
+                )
                 .padding(.horizontal)
-            
-            
+                
+                //           TextEditor(text: $textContentLog)
+                //              .placeholder(when: textContentLog.isEmpty) {
+                //                  Text("Clique aqui para digitar")
+                //                        .foregroundStyle(.white)
+                //}
+                //               .padding(.vertical, 5)
+                //               .padding(.horizontal)
+                //               .scrollContentBackground(.hidden)
+                //              .background(
+                //                   RoundedRectangle(cornerRadius: 8)
+                //                        .fill(.rosaPreto) // Fundo com canto arredondado
+                //)
+                //              .frame(height: 250)
+                //                .padding(.horizontal)
+                
+                Divider()
+                    .padding()
                 HStack{
                     Text("Imagens")
                         .foregroundStyle(.accent)
@@ -96,44 +130,44 @@ struct AddLogView: View {
                 }
             }
             .padding(.bottom)
-        
-        .sheet(isPresented: $showImagePicker) {
-            PhotoPicker(selectedImages: $selectedImages)
-        }
-        .navigationTitle("Escrever Log")
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button("Registrar") {
-                    guard let topic = selectedOption, !textContentLog.isEmpty else { return }
-                    
-                    let imagesData = selectedImages.compactMap { $0.jpegData(compressionQuality: 0.8) }
-                    
-                    coreDataVM.addLog(to: currentProject,
-                                      title: topic,
-                                      textContent: textContentLog,
-                                      imagesData: imagesData)
-                    
-                    dismiss()
-                }
-                .foregroundStyle(.accent)
+            
+            .sheet(isPresented: $showImagePicker) {
+                PhotoPicker(selectedImages: $selectedImages)
             }
-        }
-        .alert("Deletar Log", isPresented: $showDeleteAlert) {
-            Button("Cancelar", role: .cancel) {}
-            Button("Deletar", role: .destructive) {
-                if let logToDelete = logToDelete {
-                    coreDataVM.deleteLog(logToDelete)
+            .navigationTitle("Escrever Log")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Registrar") {
+                        guard let topic = selectedOption, !textContentLog.isEmpty else { return }
+                        
+                        let imagesData = selectedImages.compactMap { $0.jpegData(compressionQuality: 0.8) }
+                        
+                        coreDataVM.addLog(to: currentProject,
+                                          title: topic,
+                                          textContent: textContentLog,
+                                          imagesData: imagesData)
+                        
+                        dismiss()
+                    }
+                    .foregroundStyle(.accent)
                 }
             }
-        } message: {
-            Text("Tem certeza que deseja deletar este log?")
+            .alert("Deletar Log", isPresented: $showDeleteAlert) {
+                Button("Cancelar", role: .cancel) {}
+                Button("Deletar", role: .destructive) {
+                    if let logToDelete = logToDelete {
+                        coreDataVM.deleteLog(logToDelete)
+                    }
+                }
+            } message: {
+                Text("Tem certeza que deseja deletar este log?")
+            }
         }
     }
+    
+    
 }
-
-
-
 
 
 extension View {

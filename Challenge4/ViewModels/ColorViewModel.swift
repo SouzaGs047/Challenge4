@@ -4,62 +4,63 @@
 //
 //  Created by HENRIQUE LEAL PEREIRA DOS SANTOS on 30/01/25.
 //import SwiftUI
+import SwiftUI
 import CoreData
 
 class ColorViewModel: ObservableObject {
-private let context: NSManagedObjectContext
-@Published var colors: [ColorItemEntity] = []
-
-
-init(context: NSManagedObjectContext = PersistenceController.shared.viewContext) {
-    self.context = context
-    fetchColors()
-}
-
-func fetchColors() {
-    let request: NSFetchRequest<ColorItemEntity> = ColorItemEntity.fetchRequest()
-    do {
-        colors = try context.fetch(request)
-    } catch {
-        print("Erro ao buscar cores: \(error.localizedDescription)")
-    }
-}
-
-func addColor(hex: String) {
-    guard !colors.contains(where: { $0.hex == hex }) else {
-        print("A cor já existe na lista.")
-        return
+    private let context: NSManagedObjectContext
+    @Published var colors: [ColorItemEntity] = []
+    private var project: ProjectEntity
+    
+    init(project: ProjectEntity, context: NSManagedObjectContext = PersistenceController.shared.viewContext) {
+        self.context = context
+        self.project = project
+        fetchColors()
     }
     
-    let newColor = ColorItemEntity(context: context)
-    newColor.hex = hex
-    saveData()
-}
-
-func deleteColor(color: ColorItemEntity) {
-    context.delete(color)
-    saveData()
-}
-
-func deleteAllColors() {
-    let fetchRequest: NSFetchRequest<NSFetchRequestResult> = ColorItemEntity.fetchRequest()
-    let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-
-    do {
-        try context.execute(deleteRequest)
-        try context.save()
-        fetchColors()
-    } catch {
-        print("Erro ao apagar todas as cores: \(error.localizedDescription)")
+    func fetchColors() {
+        if let set = project.brandingColors as? Set<ColorItemEntity> {
+            self.colors = set.sorted { ($0.hex ?? "") < ($1.hex ?? "") }
+        }
     }
-}
-
-private func saveData() {
-    do {
-        try context.save()
-        fetchColors()
-    } catch {
-        print("Erro ao salvar dados: \(error.localizedDescription)")
+    
+    func addColor(hex: String) {
+        
+        if let existingColors = project.brandingColors as? Set<ColorItemEntity>,
+           existingColors.contains(where: { $0.hex == hex }) {
+            print("Cor \(hex) já existe no projeto e não será adicionada.")
+            return
+        }
+        
+        let newColor = ColorItemEntity(context: context)
+        newColor.hex = hex
+        newColor.project = project // 🔹 Vincula ao projeto atual
+        
+        project.addToBrandingColors(newColor) // 🔹 Adiciona à relação
+        
+        saveData()
     }
-}
+
+    func deleteColor(at offsets: IndexSet) {
+        offsets.forEach { index in
+            let color = colors[index]
+            context.delete(color)
+        }
+        saveData()
+    }
+    
+    func deleteColor(color: ColorItemEntity) {
+        context.delete(color)
+        saveData()
+    }
+
+    
+    private func saveData() {
+        do {
+            try context.save()
+            fetchColors()
+        } catch {
+            print("Erro ao salvar cores: \(error.localizedDescription)")
+        }
+    }
 }
