@@ -9,7 +9,7 @@ struct FontPickerView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            // Cabeçalho com título e botão "Adicionar"
+            
             HStack {
                 Text("Texto")
                     .font(.title3)
@@ -22,7 +22,7 @@ struct FontPickerView: View {
                             viewModel.addFont(nameFont: fontName, category: category)
                         }
                         fontName = ""
-                        selectedCategory = nil // Reseta a seleção
+                        selectedCategory = nil
                     }
                 }
                 .disabled(selectedCategory == nil)
@@ -33,7 +33,6 @@ struct FontPickerView: View {
                 .cornerRadius(8)
             }
 
-            // Campo de texto e Menu para seleção da categoria
             HStack {
                 TextField("Nome da fonte", text: $fontName)
                     .frame(width: 200, height: 50)
@@ -56,19 +55,19 @@ struct FontPickerView: View {
                         Image(systemName: "chevron.down")
                     }
                     .padding(8)
-                    .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
-                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 1))
+                    .background(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(.linha, lineWidth: 1)
+                    )
                 }
             }
 
-            if viewModel.fonts.isEmpty {
+            if $viewModel.fonts.isEmpty {
                 Text("Nenhuma fonte adicionada ainda.")
                     .foregroundStyle(.gray)
                     .italic()
                     .padding(.all)
             }
-
-            // Mantém a List sem modificações, mas...
             List {
                 ForEach(viewModel.fonts, id: \.self) { font in
                     HStack {

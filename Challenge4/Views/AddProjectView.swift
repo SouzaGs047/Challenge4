@@ -24,11 +24,14 @@ struct AddProjectView: View {
             }
             
             TextField("Nome do projeto aqui...", text: $nameProjectTextField)
-                .foregroundColor(.black)
+                .foregroundColor(.primary)
                 .font(.headline)
                 .padding()
-                .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
-                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 1))
+                .background(
+                    RoundedRectangle(cornerRadius: 15)
+                        .stroke(.linha, lineWidth: 1)
+                )
+                
                 .padding(.horizontal)
             
             Button(action: {
@@ -48,8 +51,8 @@ struct AddProjectView: View {
             
             Spacer()
         }
-        .padding() // Garante que os elementos tenham espaço nas bordas
-        .background(Color(UIColor.systemGray6)) // Fundo mais suave para destaque
+        .padding()
+        .background(Color(UIColor.systemGray6))
     }
 }
 

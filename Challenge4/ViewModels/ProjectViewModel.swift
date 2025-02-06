@@ -78,7 +78,7 @@ class ProjectViewModel: ObservableObject {
 
         do {
             try context.save()
-            fetchProjects() // Atualiza a lista após deletar
+            fetchProjects() 
         } catch {
             print("Erro ao deletar o projeto: \(error.localizedDescription)")
         }
@@ -92,7 +92,7 @@ class ProjectViewModel: ObservableObject {
         } catch {
             print("Erro ao salvar dados: \(error)")
         }
-        fetchProjects()  // Atualiza a lista de projetos após salvar
+        fetchProjects() 
     }
 
 }

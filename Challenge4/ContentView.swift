@@ -13,7 +13,11 @@ struct ContentView: View {
     @State var showAddProjectSheet = false
     private let columns = [GridItem(.flexible()), GridItem(.flexible())]
     
+    @State private var showDeleteAlert = false
+    @State private var projectToDelete: ProjectEntity?
+    
     var body: some View {
+        
         NavigationStack {
             VStack(spacing: 20) {
                 if coreDataVM.savedEntities.isEmpty {
@@ -50,7 +54,8 @@ struct ContentView: View {
                                 }
                                 .contextMenu {
                                     Button(role: .destructive) {
-                                        coreDataVM.deleteProject(entity)
+                                        projectToDelete = entity
+                                        showDeleteAlert = true
                                     } label: {
                                         Label("Excluir", systemImage: "trash")
                                     }
@@ -58,9 +63,20 @@ struct ContentView: View {
                             }
                         }
                     }
+
                 }
             }
             .navigationTitle("Projetos")
+            .alert("Deletar Projeto", isPresented: $showDeleteAlert) {
+                Button("Cancelar", role: .cancel) {}
+                Button("Deletar", role: .destructive) {
+                    if let projectToDelete = projectToDelete {
+                        coreDataVM.deleteProject(projectToDelete)
+                    }
+                }
+            } message: {
+                Text("Tem certeza que deseja deletar este projeto?")
+            }
             .toolbar {
                 Button("Criar projeto") {
                     showAddProjectSheet.toggle()

@@ -33,7 +33,7 @@ class LogDetailViewModel: ObservableObject {
         log.title = selectedOption
         log.textContent = editedTextContent
 
-        // Atualiza as imagens no Core Data
+        
         let newImages = selectedImages.compactMap { image -> LogImageEntity? in
             guard let imageData = image.jpegData(compressionQuality: 0.8) else { return nil }
             let newImageEntity = LogImageEntity(context: context)

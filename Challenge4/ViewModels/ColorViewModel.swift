@@ -3,7 +3,7 @@
 //  TesteColorPicker
 //
 //  Created by HENRIQUE LEAL PEREIRA DOS SANTOS on 30/01/25.
-//import SwiftUI
+
 import SwiftUI
 import CoreData
 
@@ -34,9 +34,9 @@ class ColorViewModel: ObservableObject {
         
         let newColor = ColorItemEntity(context: context)
         newColor.hex = hex
-        newColor.project = project // 🔹 Vincula ao projeto atual
+        newColor.project = project
         
-        project.addToBrandingColors(newColor) // 🔹 Adiciona à relação
+        project.addToBrandingColors(newColor)
         
         saveData()
     }

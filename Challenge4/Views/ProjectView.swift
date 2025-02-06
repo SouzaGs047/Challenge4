@@ -13,14 +13,9 @@ struct ProjectView: View {
                 Text("Projeto").tag(2)
             }
             .pickerStyle(.segmented)
-            
             .padding(.horizontal)
-            .background(Color.white) // Define o fundo como branco para a aba selecionada
-            .cornerRadius(10) // Arredonda as bordas
             .onAppear {
-                UISegmentedControl.appearance().selectedSegmentTintColor = UIColor.accent // Aba selecionada branca
-                UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected) // Texto preto na aba selecionada
-                UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.black], for: .normal) // Texto branco na aba não selecionada
+                UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color.pink)
             }
             
             if selectedTab == 1 {

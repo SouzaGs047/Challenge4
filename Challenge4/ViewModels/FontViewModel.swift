@@ -25,17 +25,17 @@ class FontViewModel: ObservableObject {
         DispatchQueue.main.async {
             if let set = self.project.brandingFonts as? Set<FontItemEntity> {
                 self.fonts = set.sorted { ($0.nameFont ?? "") < ($1.nameFont ?? "") }
-                print("📌 Fontes carregadas: \(self.fonts.map { $0.nameFont ?? "Sem nome" })")
+                print(" Fontes carregadas: \(self.fonts.map { $0.nameFont ?? "Sem nome" })")
             } else {
-                print("⚠️ Nenhuma fonte encontrada para o projeto.")
+                print("Nenhuma fonte encontrada para o projeto.")
             }
         }
     }
     
     func addFont(nameFont: String, category: String) {
        
-        if fonts.contains(where: { $0.nameFont == nameFont }) {
-            print("⚠️ Fonte '\(nameFont)' já existe no projeto.")
+        if fonts.contains(where: { $0.nameFont == nameFont && $0.category == category }) {
+            print(" Fonte  duplicada:'\(nameFont)' já existe no projeto.")
             return
         }
         
@@ -44,11 +44,11 @@ class FontViewModel: ObservableObject {
         newFont.category = category
         newFont.project = project
         
-        project.addToBrandingFonts(newFont) // 🔹 Adiciona ao relacionamento
+        project.addToBrandingFonts(newFont)
         
         saveData()
         
-        print("✅ Fonte adicionada: \(nameFont), Categoria: \(category)")
+        print(" Fonte adicionada: \(nameFont), Categoria: \(category)")
     }
     
    
@@ -72,7 +72,7 @@ class FontViewModel: ObservableObject {
             try context.save()
             fetchFonts()
         } catch {
-            print("❌ Erro ao salvar fontes: \(error.localizedDescription)")
+            print(" Erro ao salvar fontes: \(error.localizedDescription)")
         }
     }
 }

@@ -10,8 +10,8 @@ struct AddLogView: View {
     @State private var selectedImages: [UIImage] = []
     @State private var showImagePicker = false
     
-    @State private var showDeleteAlert = false // Novo state para o alerta
-    @State private var logToDelete: LogEntity? // Novo state para armazenar o log a ser deletado
+    @State private var showDeleteAlert = false
+    @State private var logToDelete: LogEntity?
     
     let columns = Array(repeating: GridItem(.flexible(), spacing: 10), count: 3)
     
@@ -43,25 +43,21 @@ struct AddLogView: View {
                 .padding()
                 .background(
                     RoundedRectangle(cornerRadius: 15)
-                        .stroke(.white, lineWidth: 1)
+                        .stroke(.linha, lineWidth: 1)
                 )
                 
             }
+            
             .padding(.horizontal)
             
-            // TextEditor para digitar o log
             Divider()
             
             VStack {
                 ZStack(alignment: .topLeading) {
-                    // Placeholder: só é exibido se o texto estiver vazio
-                    
-                    
-                    // TextEditor para entrada de texto multilinha
+                   
                     TextEditor(text: $textContentLog)
-                        .foregroundColor(.black)
+                        .foregroundColor(Color(.white))
                         .padding(8)
-                    // Opcional: para alinhar o texto à esquerda (iOS 16+)
                         .multilineTextAlignment(.leading)
                     if textContentLog.isEmpty {
                         Text("Clique aqui para digitar")
@@ -71,31 +67,13 @@ struct AddLogView: View {
                     }
                 }
                 .frame(height: 200)
+                .scrollContentBackground(.hidden)
                 .background(
                     RoundedRectangle(cornerRadius: 8)
-                        .fill(Color("rosaPreto")) // Certifique-se de ter essa cor definida ou substitua por outra
-                )
-                .overlay(
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.gray, lineWidth: 1)
+                        .fill(.rosaPreto)
                 )
                 .padding(.horizontal)
-                
-                //           TextEditor(text: $textContentLog)
-                //              .placeholder(when: textContentLog.isEmpty) {
-                //                  Text("Clique aqui para digitar")
-                //                        .foregroundStyle(.white)
-                //}
-                //               .padding(.vertical, 5)
-                //               .padding(.horizontal)
-                //               .scrollContentBackground(.hidden)
-                //              .background(
-                //                   RoundedRectangle(cornerRadius: 8)
-                //                        .fill(.rosaPreto) // Fundo com canto arredondado
-                //)
-                //              .frame(height: 250)
-                //                .padding(.horizontal)
-                
+
                 Divider()
                     .padding()
                 HStack{

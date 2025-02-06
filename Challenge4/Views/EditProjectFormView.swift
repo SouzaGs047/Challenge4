@@ -3,13 +3,13 @@ import PhotosUI
 
 struct EditProjectFormView: View {
     @EnvironmentObject var coreDataVM: ProjectViewModel
-    @ObservedObject var currentProject: ProjectEntity // Novo parâmetro
+    @ObservedObject var currentProject: ProjectEntity 
     
-    @Binding var selectedImages: [UIImage]  // Alteração para um array de UIImage
+    @Binding var selectedImages: [UIImage]
     
     @State private var isBrandingExpanded = false
-    @State private var isSaved = false  // Estado para alternar entre editar e salvar
-    @State private var isImagePickerPresented = false  // Controla a exibição do ImagePicker
+    @State private var isSaved = false
+    @State private var isImagePickerPresented = false
     
     private let projectTypes = [
         "UX/UI Design",
@@ -24,19 +24,21 @@ struct EditProjectFormView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
-                // Exibição da Imagem com texto explicativo
+              
                 ImageView(selectedImages: $selectedImages)
                     .onTapGesture {
-                        // Lógica para selecionar uma nova foto
+                      
                         isImagePickerPresented.toggle()
                     }
                 
-                // Formulário
+             
                 Group {
-                    // Tipo do Projeto com design customizado no Menu
+                   
                     HStack {
                         Text("Tipo")
                             .foregroundStyle(.accent)
+                            .bold()
+                            .padding(.horizontal)
                         
                         Spacer()
                         
@@ -55,43 +57,54 @@ struct EditProjectFormView: View {
                                 Image(systemName: "chevron.down")
                             }
                             .padding()
-                            .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
-                            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 1))
+                            
                         }
-                        .disabled(!isSaved) // Desabilita quando estiver no modo de visualização
-                    }
+                        .disabled(!isSaved)
+                    }.background(
+                        RoundedRectangle(cornerRadius: 15)
+                            .stroke(.linha, lineWidth: 1)
+                    )
                     
-                    // Objetivo do Projeto
+                   
                     VStack(alignment: .leading) {
                         Text("Objetivo")
+                            .padding(.top, 5)
+                            .padding(.horizontal)
                             .foregroundStyle(.accent)
+                            .bold()
                         
                         TextEditor(text: $coreDataVM.objective)
                             .frame(height: 100)
                             .padding(8)
-                            .background(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .fill(Color.white)
-                            )
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(Color.gray, lineWidth: 1)
-                            )
+                            
                             .scrollContentBackground(.hidden)
-                            .disabled(!isSaved) // Desabilita quando estiver no modo de visualização
-                    }
+                            .disabled(!isSaved)
+                    }.background(
+                        RoundedRectangle(cornerRadius: 15)
+                            .stroke(.linha, lineWidth: 1)
+                    )
                     
-                    // Data de início e prazo final
+
                     HStack(spacing: 20) {
                         DatePickerField(title: " Data de início", date: $coreDataVM.startDate)
+                            .bold()
+                            .background(
+                                RoundedRectangle(cornerRadius: 15)
+                                    .stroke(.linha, lineWidth: 1)
+                            )
                         DatePickerField(title: "  Prazo Final", date: $coreDataVM.finalDate)
+                            .bold()
+                            .background(
+                                RoundedRectangle(cornerRadius: 15)
+                                    .stroke(.linha, lineWidth: 1)
+                            )
                     }
-                    .disabled(!isSaved) // Desabilita os campos de data quando não estiver no modo de edição
+                    
+                    .disabled(!isSaved)
                 }
                 .padding()
                 .cornerRadius(15)
                 
-                // Branding Section dentro do DisclosureGroup
                 DisclosureGroup("Configurações de Branding", isExpanded: $isBrandingExpanded) {
                     BrandingView(currentProject: currentProject)
                 }
@@ -102,7 +115,7 @@ struct EditProjectFormView: View {
             }
             .padding()
         }
-        // Aqui adicionamos o onChange para salvar automaticamente a imagem assim que ela for adicionada
+        
         .onChange(of: selectedImages) { newImages in
             guard let firstImage = newImages.first else { return }
             let imageData = firstImage.jpegData(compressionQuality: 1.0)
@@ -138,10 +151,10 @@ struct EditProjectFormView: View {
     }
     
     func saveData() {
-         // Converter imagem para Data (se existir)
+         
          let imageData = selectedImages.first?.jpegData(compressionQuality: 1.0)
          
-         // Atualizar o projeto
+         
          coreDataVM.updateProject(
              currentProject,
              type: coreDataVM.type,
@@ -155,9 +168,9 @@ struct EditProjectFormView: View {
      }
 }
 
-// Componente para exibir a imagem com texto explicativo
+
 struct ImageView: View {
-    @Binding var selectedImages: [UIImage]  // Alteração para um array de UIImage
+    @Binding var selectedImages: [UIImage]
     
     var body: some View {
         VStack {
@@ -193,7 +206,7 @@ struct ImageView: View {
     }
 }
 
-// Componente para o campo de DatePicker
+
 struct DatePickerField: View {
     let title: String
     @Binding var date: Date
@@ -202,10 +215,12 @@ struct DatePickerField: View {
         VStack(alignment: .leading) {
             Text(title)
                 .foregroundStyle(.accent)
+                
             DatePicker("", selection: $date, displayedComponents: .date)
                 .labelsHidden()
                 .foregroundStyle(.primary)
         }
+        .padding(.vertical, 5)
         .frame(maxWidth: .infinity)
     }
 }

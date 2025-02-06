@@ -31,7 +31,7 @@ struct LogDetailView: View {
                     .padding()
                     .background(
                         RoundedRectangle(cornerRadius: 15)
-                            .stroke(.white, lineWidth: 1)
+                            .stroke(.linha, lineWidth: 1)
                     )
                 }
                 .disabled(!isEditing)
@@ -41,14 +41,13 @@ struct LogDetailView: View {
                 
                 
                 TextEditor(text: $viewModel.editedTextContent)
-                    .foregroundStyle(.black)
+                    .foregroundStyle(.white)
                     .padding(.vertical, 5)
                     .padding(.horizontal)
                     .scrollContentBackground(.hidden)
                     .background(
                         RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.gray, lineWidth: 1)
-                            .fill(.white) // Fundo com canto arredondado
+                            .fill(.rosaPreto) // Fundo com canto arredondado
                     )
                     .frame(height: 250)
                     .padding(.horizontal)

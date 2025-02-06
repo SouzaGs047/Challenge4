@@ -17,20 +17,23 @@ struct CardView: View {
     var body: some View {
         if !isDeleted {
             VStack {
-                RoundedRectangle(cornerRadius: 10)
+                Circle()
                     .fill(Color(hex: ColorItemEntity.hex ?? "#000000") ?? .black)
-                    .frame(width: 100, height: 120)
-                    .overlay(
-                        VStack {
-                            Text(ColorItemEntity.hex ?? "#000000")
-                                
-                                .font(.system(size: 15).bold())
-                                .foregroundStyle(.white)
-                                .foregroundStyle(.white.opacity(0.8))
-                        }
-                        .padding()
+                    .frame(width: 65, height: 65)
+                    .background(
+                        Circle()
+                            .stroke(.linha, lineWidth: 2)
                     )
-                    .shadow(radius: 5)
+                
+                
+                Text(ColorItemEntity.hex ?? "#000000")
+                
+                    .font(.system(size: 10).bold())
+                    .foregroundStyle(.primary)
+                    
+                
+            }.padding(3)
+                    
                     .contextMenu {
                         Button(role: .destructive) {
                             showAlert = true
@@ -57,5 +60,5 @@ struct CardView: View {
             }
         }
     }
-}
+
 
